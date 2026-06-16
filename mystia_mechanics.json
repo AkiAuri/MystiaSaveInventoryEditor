@@ -1,0 +1,4102 @@
+{
+  "guest_preferences": {
+    "1000": {
+      "RevealedFoodTags": [
+        24,
+        1,
+        4,
+        8,
+        15,
+        19
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        25,
+        10
+      ],
+      "RevealedBevTags": [
+        1,
+        2,
+        6,
+        11
+      ]
+    },
+    "1001": {
+      "RevealedFoodTags": [
+        0,
+        10,
+        6,
+        -1,
+        8
+      ],
+      "RevealedHateFoodTags": [
+        24,
+        7,
+        2
+      ],
+      "RevealedBevTags": [
+        1,
+        2,
+        11
+      ]
+    },
+    "1005": {
+      "RevealedFoodTags": [
+        12,
+        17,
+        20,
+        3,
+        29
+      ],
+      "RevealedHateFoodTags": [
+        24,
+        18,
+        6,
+        22
+      ],
+      "RevealedBevTags": [
+        -1,
+        0,
+        12,
+        11,
+        13,
+        15,
+        18,
+        16,
+        6
+      ]
+    },
+    "1002": {
+      "RevealedFoodTags": [
+        3,
+        4,
+        13,
+        17,
+        25
+      ],
+      "RevealedHateFoodTags": [
+        0,
+        6,
+        9,
+        24
+      ],
+      "RevealedBevTags": [
+        0,
+        8,
+        18
+      ]
+    },
+    "1004": {
+      "RevealedFoodTags": [
+        7,
+        10,
+        25,
+        30,
+        12
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        9
+      ],
+      "RevealedBevTags": [
+        0,
+        1,
+        11,
+        3,
+        17
+      ]
+    },
+    "1003": {
+      "RevealedFoodTags": [
+        9,
+        -1,
+        0,
+        4,
+        5,
+        18,
+        16,
+        23,
+        27
+      ],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": [
+        2,
+        11,
+        14,
+        5
+      ]
+    },
+    "1007": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "1006": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "1100": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2000": {
+      "RevealedFoodTags": [
+        17,
+        16,
+        24,
+        20,
+        18
+      ],
+      "RevealedHateFoodTags": [
+        15,
+        6,
+        22
+      ],
+      "RevealedBevTags": [
+        0,
+        1,
+        10,
+        13
+      ]
+    },
+    "2001": {
+      "RevealedFoodTags": [
+        2000,
+        15,
+        34,
+        16,
+        31,
+        0
+      ],
+      "RevealedHateFoodTags": [
+        17
+      ],
+      "RevealedBevTags": [
+        -1,
+        4,
+        11,
+        15,
+        14
+      ]
+    },
+    "2002": {
+      "RevealedFoodTags": [
+        8,
+        19,
+        5,
+        12,
+        -1,
+        23,
+        35
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        24,
+        28
+      ],
+      "RevealedBevTags": [
+        2,
+        10,
+        17,
+        6
+      ]
+    },
+    "2003": {
+      "RevealedFoodTags": [
+        3,
+        28,
+        17,
+        29,
+        30,
+        23
+      ],
+      "RevealedHateFoodTags": [
+        0,
+        10,
+        22,
+        24,
+        -1
+      ],
+      "RevealedBevTags": [
+        -1,
+        15,
+        16,
+        19
+      ]
+    },
+    "2004": {
+      "RevealedFoodTags": [
+        16,
+        17,
+        1,
+        11,
+        24,
+        29
+      ],
+      "RevealedHateFoodTags": [
+        18,
+        22
+      ],
+      "RevealedBevTags": [
+        0,
+        12,
+        6
+      ]
+    },
+    "2005": {
+      "RevealedFoodTags": [
+        0,
+        34,
+        15,
+        6,
+        22,
+        23
+      ],
+      "RevealedHateFoodTags": [
+        7,
+        26
+      ],
+      "RevealedBevTags": [
+        1,
+        4,
+        7
+      ]
+    },
+    "2006": {
+      "RevealedFoodTags": [
+        17,
+        15,
+        18,
+        24,
+        29,
+        27
+      ],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": [
+        2,
+        15,
+        5,
+        16
+      ]
+    },
+    "2007": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2008": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2009": {
+      "RevealedFoodTags": [
+        16,
+        17,
+        1,
+        11,
+        24,
+        29
+      ],
+      "RevealedHateFoodTags": [
+        24,
+        18,
+        22
+      ],
+      "RevealedBevTags": [
+        0,
+        12,
+        6
+      ]
+    },
+    "3000": {
+      "RevealedFoodTags": [
+        17,
+        24,
+        3,
+        9,
+        27,
+        23,
+        20
+      ],
+      "RevealedHateFoodTags": [
+        34,
+        22,
+        32
+      ],
+      "RevealedBevTags": [
+        1,
+        12,
+        3,
+        17
+      ]
+    },
+    "3001": {
+      "RevealedFoodTags": [
+        9,
+        15,
+        23,
+        0,
+        30,
+        4,
+        16
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        24,
+        28,
+        2000
+      ],
+      "RevealedBevTags": [
+        2,
+        8,
+        3,
+        14
+      ]
+    },
+    "3002": {
+      "RevealedFoodTags": [
+        24,
+        0,
+        16,
+        18,
+        27,
+        19,
+        30,
+        20
+      ],
+      "RevealedHateFoodTags": [
+        2000,
+        13
+      ],
+      "RevealedBevTags": [
+        17,
+        4,
+        11,
+        5
+      ]
+    },
+    "3003": {
+      "RevealedFoodTags": [
+        12,
+        35,
+        5,
+        7,
+        10,
+        4
+      ],
+      "RevealedHateFoodTags": [
+        13,
+        18
+      ],
+      "RevealedBevTags": [
+        11,
+        4,
+        16,
+        1
+      ]
+    },
+    "3004": {
+      "RevealedFoodTags": [
+        17,
+        2,
+        28,
+        14,
+        27,
+        5,
+        30
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        9
+      ],
+      "RevealedBevTags": [
+        18,
+        6,
+        0,
+        12
+      ]
+    },
+    "3005": {
+      "RevealedFoodTags": [
+        12,
+        9,
+        23,
+        6,
+        33,
+        3,
+        19
+      ],
+      "RevealedHateFoodTags": [
+        21,
+        17
+      ],
+      "RevealedBevTags": [
+        10,
+        15,
+        5,
+        2
+      ]
+    },
+    "3006": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "3007": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "3008": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "3009": {
+      "RevealedFoodTags": [
+        0,
+        12,
+        1,
+        3,
+        8,
+        31,
+        5
+      ],
+      "RevealedHateFoodTags": [
+        22,
+        34
+      ],
+      "RevealedBevTags": [
+        17,
+        4,
+        5,
+        2
+      ]
+    },
+    "3010": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "3011": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "3012": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "4000": {
+      "RevealedFoodTags": [
+        0,
+        12,
+        19,
+        3,
+        8,
+        20
+      ],
+      "RevealedHateFoodTags": [
+        13
+      ],
+      "RevealedBevTags": [
+        2,
+        5,
+        19,
+        3
+      ]
+    },
+    "4001": {
+      "RevealedFoodTags": [
+        17,
+        29,
+        26,
+        20,
+        19,
+        21,
+        28,
+        4001
+      ],
+      "RevealedHateFoodTags": [
+        25
+      ],
+      "RevealedBevTags": [
+        -1,
+        12,
+        13,
+        15
+      ]
+    },
+    "4002": {
+      "RevealedFoodTags": [
+        7,
+        4,
+        29,
+        5,
+        30,
+        13,
+        27
+      ],
+      "RevealedHateFoodTags": [
+        22,
+        15,
+        12,
+        9
+      ],
+      "RevealedBevTags": [
+        18,
+        9,
+        8,
+        7
+      ]
+    },
+    "4003": {
+      "RevealedFoodTags": [
+        24,
+        8,
+        6,
+        22,
+        35,
+        27,
+        23
+      ],
+      "RevealedHateFoodTags": [
+        4
+      ],
+      "RevealedBevTags": [
+        1,
+        5,
+        14,
+        11
+      ]
+    },
+    "4004": {
+      "RevealedFoodTags": [
+        17,
+        12,
+        5,
+        28,
+        25,
+        20,
+        35
+      ],
+      "RevealedHateFoodTags": [
+        -1,
+        13
+      ],
+      "RevealedBevTags": [
+        17,
+        4,
+        0,
+        16
+      ]
+    },
+    "4005": {
+      "RevealedFoodTags": [
+        0,
+        12,
+        10,
+        3,
+        21,
+        20
+      ],
+      "RevealedHateFoodTags": [
+        22
+      ],
+      "RevealedBevTags": [
+        1,
+        6,
+        11,
+        3
+      ]
+    },
+    "4006": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "4007": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "4008": {
+      "RevealedFoodTags": [
+        13,
+        4,
+        18,
+        17,
+        5
+      ],
+      "RevealedHateFoodTags": [
+        15,
+        34,
+        2000,
+        -2
+      ],
+      "RevealedBevTags": [
+        13,
+        17,
+        8,
+        12,
+        2
+      ]
+    },
+    "4009": {
+      "RevealedFoodTags": [
+        0
+      ],
+      "RevealedHateFoodTags": [
+        0
+      ],
+      "RevealedBevTags": [
+        0
+      ]
+    },
+    "4010": {
+      "RevealedFoodTags": [
+        0
+      ],
+      "RevealedHateFoodTags": [
+        0
+      ],
+      "RevealedBevTags": [
+        0
+      ]
+    },
+    "4011": {
+      "RevealedFoodTags": [
+        0
+      ],
+      "RevealedHateFoodTags": [
+        0
+      ],
+      "RevealedBevTags": [
+        0
+      ]
+    },
+    "4012": {
+      "RevealedFoodTags": [
+        0
+      ],
+      "RevealedHateFoodTags": [
+        0
+      ],
+      "RevealedBevTags": [
+        0
+      ]
+    },
+    "4013": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "4014": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "4015": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "4016": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2500": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2501": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2502": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2503": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2504": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2505": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2506": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2507": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2508": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "2509": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "0": {
+      "RevealedFoodTags": [
+        17,
+        18,
+        24,
+        0
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        7,
+        21
+      ],
+      "RevealedBevTags": [
+        0,
+        3
+      ]
+    },
+    "1": {
+      "RevealedFoodTags": [
+        0,
+        18,
+        24,
+        9,
+        19
+      ],
+      "RevealedHateFoodTags": [
+        -3,
+        8
+      ],
+      "RevealedBevTags": [
+        15,
+        16
+      ]
+    },
+    "2": {
+      "RevealedFoodTags": [
+        0,
+        1,
+        6,
+        17,
+        33
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        22,
+        24
+      ],
+      "RevealedBevTags": [
+        14,
+        12
+      ]
+    },
+    "3": {
+      "RevealedFoodTags": [
+        7,
+        12,
+        17,
+        25,
+        4,
+        32
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        15,
+        22
+      ],
+      "RevealedBevTags": [
+        6,
+        4
+      ]
+    },
+    "4": {
+      "RevealedFoodTags": [
+        14,
+        12,
+        2,
+        7,
+        3,
+        25
+      ],
+      "RevealedHateFoodTags": [
+        -1,
+        6,
+        15
+      ],
+      "RevealedBevTags": [
+        5,
+        6,
+        9
+      ]
+    },
+    "5": {
+      "RevealedFoodTags": [
+        25,
+        12,
+        3,
+        8
+      ],
+      "RevealedHateFoodTags": [
+        -2,
+        18,
+        34
+      ],
+      "RevealedBevTags": [
+        11,
+        17,
+        1
+      ]
+    },
+    "6": {
+      "RevealedFoodTags": [
+        3,
+        9,
+        16
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        8,
+        24
+      ],
+      "RevealedBevTags": [
+        5,
+        10
+      ]
+    },
+    "7": {
+      "RevealedFoodTags": [
+        17,
+        9,
+        -2,
+        27,
+        4
+      ],
+      "RevealedHateFoodTags": [
+        -3,
+        8
+      ],
+      "RevealedBevTags": [
+        -1,
+        0,
+        4
+      ]
+    },
+    "8": {
+      "RevealedFoodTags": [
+        0,
+        12,
+        8,
+        23,
+        28
+      ],
+      "RevealedHateFoodTags": [
+        6
+      ],
+      "RevealedBevTags": [
+        2,
+        11
+      ]
+    },
+    "9": {
+      "RevealedFoodTags": [
+        2,
+        7,
+        17,
+        20,
+        5,
+        -3,
+        31
+      ],
+      "RevealedHateFoodTags": [
+        0,
+        3,
+        6
+      ],
+      "RevealedBevTags": [
+        2,
+        7
+      ]
+    },
+    "10": {
+      "RevealedFoodTags": [
+        26,
+        5,
+        12,
+        6,
+        22
+      ],
+      "RevealedHateFoodTags": [
+        24
+      ],
+      "RevealedBevTags": [
+        0,
+        3
+      ]
+    },
+    "12": {
+      "RevealedFoodTags": [
+        0,
+        2,
+        1,
+        -4
+      ],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "13": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "14": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "17": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "18": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "19": {
+      "RevealedFoodTags": [
+        30
+      ],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": [
+        11
+      ]
+    },
+    "20": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "21": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "15": {
+      "RevealedFoodTags": [
+        14,
+        23,
+        0,
+        9
+      ],
+      "RevealedHateFoodTags": [
+        13,
+        24,
+        31
+      ],
+      "RevealedBevTags": [
+        19,
+        4,
+        17
+      ]
+    },
+    "28": {
+      "RevealedFoodTags": [
+        21,
+        17,
+        20,
+        24
+      ],
+      "RevealedHateFoodTags": [
+        25,
+        -3,
+        8
+      ],
+      "RevealedBevTags": [
+        13,
+        12,
+        3
+      ]
+    },
+    "27": {
+      "RevealedFoodTags": [
+        13,
+        17,
+        20,
+        29,
+        4
+      ],
+      "RevealedHateFoodTags": [
+        22,
+        24,
+        18,
+        15
+      ],
+      "RevealedBevTags": [
+        9,
+        16,
+        7
+      ]
+    },
+    "24": {
+      "RevealedFoodTags": [
+        22,
+        35,
+        34,
+        31,
+        33
+      ],
+      "RevealedHateFoodTags": [
+        -3,
+        4,
+        27
+      ],
+      "RevealedBevTags": [
+        15,
+        14,
+        5
+      ]
+    },
+    "25": {
+      "RevealedFoodTags": [
+        12,
+        25,
+        5,
+        27
+      ],
+      "RevealedHateFoodTags": [
+        19,
+        -1,
+        24
+      ],
+      "RevealedBevTags": [
+        18,
+        6,
+        17
+      ]
+    },
+    "16": {
+      "RevealedFoodTags": [
+        29,
+        5,
+        17,
+        21,
+        28
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        10,
+        24
+      ],
+      "RevealedBevTags": [
+        12,
+        13,
+        -1
+      ]
+    },
+    "29": {
+      "RevealedFoodTags": [
+        29,
+        5,
+        17,
+        21,
+        28
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        10,
+        24
+      ],
+      "RevealedBevTags": [
+        12,
+        13,
+        -1
+      ]
+    },
+    "22": {
+      "RevealedFoodTags": [
+        17,
+        13,
+        18,
+        4
+      ],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": [
+        13,
+        8,
+        17,
+        12
+      ]
+    },
+    "23": {
+      "RevealedFoodTags": [
+        0,
+        1,
+        4,
+        5,
+        12,
+        14,
+        9,
+        -1
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        28,
+        7
+      ],
+      "RevealedBevTags": [
+        3,
+        2,
+        7
+      ]
+    },
+    "11": {
+      "RevealedFoodTags": [
+        5,
+        12
+      ],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": [
+        11
+      ]
+    },
+    "39": {
+      "RevealedFoodTags": [
+        3,
+        7,
+        16,
+        23
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        24,
+        15
+      ],
+      "RevealedBevTags": [
+        -1,
+        4,
+        12
+      ]
+    },
+    "40": {
+      "RevealedFoodTags": [
+        0,
+        1,
+        4,
+        5,
+        12,
+        14,
+        9,
+        -1
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        28,
+        7
+      ],
+      "RevealedBevTags": [
+        3,
+        2,
+        7
+      ]
+    },
+    "26": {
+      "RevealedFoodTags": [
+        0
+      ],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": [
+        0
+      ]
+    },
+    "30": {
+      "RevealedFoodTags": [
+        1,
+        0,
+        29,
+        17
+      ],
+      "RevealedHateFoodTags": [
+        24,
+        22
+      ],
+      "RevealedBevTags": [
+        12,
+        13,
+        3,
+        14
+      ]
+    },
+    "31": {
+      "RevealedFoodTags": [
+        28,
+        21,
+        26,
+        17,
+        3,
+        29
+      ],
+      "RevealedHateFoodTags": [
+        24,
+        22,
+        18
+      ],
+      "RevealedBevTags": [
+        -1,
+        12,
+        13,
+        15
+      ]
+    },
+    "32": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "33": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "34": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "35": {
+      "RevealedFoodTags": [],
+      "RevealedHateFoodTags": [],
+      "RevealedBevTags": []
+    },
+    "36": {
+      "RevealedFoodTags": [
+        3,
+        1,
+        14,
+        34
+      ],
+      "RevealedHateFoodTags": [
+        6,
+        18,
+        8
+      ],
+      "RevealedBevTags": [
+        -1,
+        13,
+        16
+      ]
+    },
+    "37": {
+      "RevealedFoodTags": [
+        0,
+        8,
+        12,
+        10,
+        23,
+        -3
+      ],
+      "RevealedHateFoodTags": [
+        2,
+        7
+      ],
+      "RevealedBevTags": [
+        2,
+        3,
+        4
+      ]
+    },
+    "38": {
+      "RevealedFoodTags": [
+        5,
+        8,
+        13,
+        14,
+        25,
+        30
+      ],
+      "RevealedHateFoodTags": [
+        1,
+        9,
+        6
+      ],
+      "RevealedBevTags": [
+        3,
+        1,
+        7,
+        8
+      ]
+    },
+    "41": {
+      "RevealedFoodTags": [
+        12,
+        19,
+        5,
+        29,
+        21,
+        20
+      ],
+      "RevealedHateFoodTags": [
+        15,
+        22,
+        6
+      ],
+      "RevealedBevTags": [
+        5,
+        1,
+        17,
+        13
+      ]
+    }
+  },
+  "item_tags": {
+    "foods": {
+      "1000": {
+        "tags": [
+          6,
+          8
+        ],
+        "banTags": [
+          7
+        ]
+      },
+      "1001": {
+        "tags": [
+          1,
+          23,
+          8,
+          6
+        ],
+        "banTags": []
+      },
+      "1002": {
+        "tags": [
+          0,
+          -1,
+          10,
+          8,
+          15,
+          20,
+          4,
+          22
+        ],
+        "banTags": []
+      },
+      "1003": {
+        "tags": [
+          28,
+          15,
+          8,
+          2
+        ],
+        "banTags": []
+      },
+      "1004": {
+        "tags": [
+          4,
+          11,
+          16,
+          20,
+          8,
+          19
+        ],
+        "banTags": []
+      },
+      "1005": {
+        "tags": [
+          24,
+          5,
+          29,
+          8,
+          28,
+          22
+        ],
+        "banTags": []
+      },
+      "1006": {
+        "tags": [
+          28,
+          20,
+          12,
+          19
+        ],
+        "banTags": []
+      },
+      "1007": {
+        "tags": [
+          28,
+          20,
+          19,
+          9,
+          8,
+          1
+        ],
+        "banTags": []
+      },
+      "1008": {
+        "tags": [
+          28,
+          20,
+          17,
+          11,
+          4,
+          30,
+          27
+        ],
+        "banTags": []
+      },
+      "1009": {
+        "tags": [
+          26,
+          0,
+          6,
+          3
+        ],
+        "banTags": []
+      },
+      "1010": {
+        "tags": [
+          26,
+          12,
+          30,
+          16
+        ],
+        "banTags": []
+      },
+      "1011": {
+        "tags": [
+          26,
+          6,
+          16,
+          1,
+          34,
+          20,
+          22,
+          15
+        ],
+        "banTags": []
+      },
+      "1012": {
+        "tags": [
+          3,
+          26,
+          20
+        ],
+        "banTags": []
+      },
+      "1013": {
+        "tags": [
+          17,
+          4,
+          31,
+          20,
+          25
+        ],
+        "banTags": []
+      },
+      "1014": {
+        "tags": [
+          17,
+          31,
+          27,
+          29,
+          20,
+          25,
+          4
+        ],
+        "banTags": []
+      },
+      "1015": {
+        "tags": [
+          12,
+          18,
+          16,
+          7,
+          1,
+          25
+        ],
+        "banTags": []
+      },
+      "1016": {
+        "tags": [
+          9,
+          1,
+          17,
+          7,
+          30,
+          20,
+          16
+        ],
+        "banTags": []
+      },
+      "1017": {
+        "tags": [
+          25,
+          4,
+          5,
+          0,
+          10,
+          1,
+          26,
+          30,
+          14,
+          23,
+          20
+        ],
+        "banTags": []
+      },
+      "2000": {
+        "tags": [
+          15,
+          16,
+          8,
+          30
+        ],
+        "banTags": []
+      },
+      "2001": {
+        "tags": [
+          2000,
+          16,
+          31,
+          30,
+          15
+        ],
+        "banTags": []
+      },
+      "2002": {
+        "tags": [
+          16,
+          34,
+          0,
+          23,
+          4,
+          -1,
+          9,
+          22,
+          30
+        ],
+        "banTags": []
+      },
+      "2003": {
+        "tags": [
+          24,
+          18,
+          30,
+          9
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "2004": {
+        "tags": [
+          24,
+          11,
+          19,
+          20,
+          8,
+          30
+        ],
+        "banTags": [
+          0
+        ]
+      },
+      "2005": {
+        "tags": [
+          24,
+          4,
+          9,
+          16,
+          18,
+          30,
+          19,
+          20,
+          23
+        ],
+        "banTags": []
+      },
+      "2006": {
+        "tags": [
+          0,
+          16,
+          8,
+          19,
+          30
+        ],
+        "banTags": [
+          1,
+          9
+        ]
+      },
+      "2007": {
+        "tags": [
+          4,
+          9,
+          12,
+          17,
+          23
+        ],
+        "banTags": [
+          8
+        ]
+      },
+      "2008": {
+        "tags": [
+          1,
+          4,
+          5,
+          8,
+          11,
+          16,
+          18,
+          19,
+          20,
+          25,
+          12
+        ],
+        "banTags": []
+      },
+      "2009": {
+        "tags": [
+          28,
+          17,
+          20,
+          21,
+          31,
+          30
+        ],
+        "banTags": [
+          6,
+          15
+        ]
+      },
+      "2010": {
+        "tags": [
+          28,
+          2000,
+          17,
+          21,
+          31,
+          23
+        ],
+        "banTags": [
+          6,
+          15
+        ]
+      },
+      "2011": {
+        "tags": [
+          28,
+          2000,
+          17,
+          21,
+          31,
+          23,
+          19,
+          29
+        ],
+        "banTags": [
+          6,
+          15
+        ]
+      },
+      "2012": {
+        "tags": [
+          1,
+          16,
+          28
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "2013": {
+        "tags": [
+          1,
+          16,
+          6,
+          28,
+          4
+        ],
+        "banTags": []
+      },
+      "2014": {
+        "tags": [
+          1,
+          16,
+          11,
+          29,
+          0,
+          17,
+          4,
+          -1,
+          26,
+          14,
+          25
+        ],
+        "banTags": []
+      },
+      "2015": {
+        "tags": [
+          16,
+          15,
+          18,
+          6
+        ],
+        "banTags": [
+          0
+        ]
+      },
+      "2016": {
+        "tags": [
+          0,
+          10,
+          23,
+          9,
+          6,
+          33
+        ],
+        "banTags": []
+      },
+      "2017": {
+        "tags": [
+          0,
+          34,
+          15,
+          6,
+          23,
+          24,
+          20,
+          22
+        ],
+        "banTags": [
+          7,
+          2
+        ]
+      },
+      "3000": {
+        "tags": [
+          -2,
+          3,
+          9,
+          17
+        ],
+        "banTags": [
+          8
+        ]
+      },
+      "3001": {
+        "tags": [
+          9,
+          20,
+          25,
+          24
+        ],
+        "banTags": [
+          0
+        ]
+      },
+      "3002": {
+        "tags": [
+          27,
+          24,
+          23,
+          30,
+          20,
+          29
+        ],
+        "banTags": [
+          3
+        ]
+      },
+      "3003": {
+        "tags": [
+          9,
+          22,
+          15
+        ],
+        "banTags": [
+          2000
+        ]
+      },
+      "3004": {
+        "tags": [
+          -1,
+          5,
+          23,
+          0,
+          30
+        ],
+        "banTags": [
+          2000
+        ]
+      },
+      "3005": {
+        "tags": [
+          2,
+          16,
+          30,
+          4,
+          25,
+          29,
+          7,
+          21
+        ],
+        "banTags": [
+          0,
+          34
+        ]
+      },
+      "3006": {
+        "tags": [
+          17,
+          30,
+          31,
+          27
+        ],
+        "banTags": [
+          0,
+          15
+        ]
+      },
+      "3007": {
+        "tags": [
+          7,
+          2,
+          30,
+          28,
+          20
+        ],
+        "banTags": [
+          34
+        ]
+      },
+      "3008": {
+        "tags": [
+          27,
+          29,
+          20,
+          16,
+          4,
+          18,
+          30,
+          21,
+          19
+        ],
+        "banTags": [
+          24
+        ]
+      },
+      "3009": {
+        "tags": [
+          30,
+          7
+        ],
+        "banTags": []
+      },
+      "3010": {
+        "tags": [
+          10,
+          30,
+          0,
+          25,
+          4
+        ],
+        "banTags": [
+          2000
+        ]
+      },
+      "3011": {
+        "tags": [
+          16,
+          1,
+          7,
+          4,
+          25,
+          21
+        ],
+        "banTags": []
+      },
+      "3012": {
+        "tags": [
+          17,
+          28,
+          30
+        ],
+        "banTags": []
+      },
+      "3013": {
+        "tags": [
+          3,
+          26,
+          2,
+          14,
+          30
+        ],
+        "banTags": []
+      },
+      "3014": {
+        "tags": [
+          5,
+          27,
+          29,
+          7,
+          1,
+          25,
+          14
+        ],
+        "banTags": []
+      },
+      "3015": {
+        "tags": [
+          3,
+          9,
+          17,
+          2
+        ],
+        "banTags": [
+          18
+        ]
+      },
+      "3016": {
+        "tags": [
+          3,
+          8,
+          6,
+          22,
+          0,
+          26,
+          19
+        ],
+        "banTags": [
+          21
+        ]
+      },
+      "3017": {
+        "tags": [
+          3,
+          6,
+          8,
+          19,
+          23,
+          12,
+          26,
+          0
+        ],
+        "banTags": []
+      },
+      "4000": {
+        "tags": [
+          28,
+          27,
+          24
+        ],
+        "banTags": [
+          1
+        ]
+      },
+      "4001": {
+        "tags": [
+          8,
+          31,
+          0,
+          27
+        ],
+        "banTags": []
+      },
+      "4002": {
+        "tags": [
+          24,
+          27,
+          35,
+          21,
+          29,
+          10,
+          26
+        ],
+        "banTags": []
+      },
+      "4003": {
+        "tags": [
+          12,
+          28,
+          17
+        ],
+        "banTags": []
+      },
+      "4004": {
+        "tags": [
+          12,
+          17,
+          2,
+          30
+        ],
+        "banTags": [
+          0
+        ]
+      },
+      "4005": {
+        "tags": [
+          14,
+          5,
+          25,
+          1,
+          24,
+          32,
+          4
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "4006": {
+        "tags": [
+          0,
+          3,
+          9
+        ],
+        "banTags": []
+      },
+      "4007": {
+        "tags": [
+          10,
+          3,
+          0
+        ],
+        "banTags": [
+          18
+        ]
+      },
+      "4008": {
+        "tags": [
+          10,
+          20,
+          4,
+          25,
+          19
+        ],
+        "banTags": [
+          24,
+          26
+        ]
+      },
+      "4009": {
+        "tags": [
+          12,
+          3
+        ],
+        "banTags": []
+      },
+      "4010": {
+        "tags": [
+          11,
+          16,
+          20
+        ],
+        "banTags": [
+          10
+        ]
+      },
+      "4011": {
+        "tags": [
+          0,
+          19,
+          6,
+          9,
+          18,
+          20,
+          23
+        ],
+        "banTags": [
+          21,
+          7
+        ]
+      },
+      "4012": {
+        "tags": [
+          26,
+          7,
+          30,
+          25
+        ],
+        "banTags": []
+      },
+      "4013": {
+        "tags": [
+          29,
+          4,
+          27,
+          30
+        ],
+        "banTags": [
+          22,
+          6
+        ]
+      },
+      "4014": {
+        "tags": [
+          13,
+          29,
+          21,
+          20,
+          7,
+          4,
+          17
+        ],
+        "banTags": [
+          0,
+          8,
+          1
+        ]
+      },
+      "4015": {
+        "tags": [
+          30,
+          19
+        ],
+        "banTags": []
+      },
+      "4016": {
+        "tags": [
+          24,
+          1,
+          19,
+          4001
+        ],
+        "banTags": []
+      },
+      "4017": {
+        "tags": [
+          17,
+          29,
+          4,
+          28,
+          20
+        ],
+        "banTags": [
+          0
+        ]
+      },
+      "5000": {
+        "tags": [
+          18,
+          1,
+          19
+        ],
+        "banTags": []
+      },
+      "5001": {
+        "tags": [
+          18,
+          1,
+          24,
+          16
+        ],
+        "banTags": [
+          9
+        ]
+      },
+      "5002": {
+        "tags": [
+          0,
+          3,
+          22,
+          23,
+          10,
+          26,
+          14,
+          34
+        ],
+        "banTags": [
+          21,
+          29
+        ]
+      },
+      "5003": {
+        "tags": [
+          20,
+          9,
+          17
+        ],
+        "banTags": [
+          24
+        ]
+      },
+      "5004": {
+        "tags": [
+          20,
+          9,
+          13,
+          26
+        ],
+        "banTags": [
+          21
+        ]
+      },
+      "5005": {
+        "tags": [
+          20,
+          29,
+          21,
+          27,
+          17,
+          2
+        ],
+        "banTags": [
+          8,
+          22
+        ]
+      },
+      "5006": {
+        "tags": [
+          20,
+          9,
+          1
+        ],
+        "banTags": [
+          24
+        ]
+      },
+      "5007": {
+        "tags": [
+          4,
+          28,
+          1,
+          21,
+          29
+        ],
+        "banTags": [
+          9
+        ]
+      },
+      "5008": {
+        "tags": [
+          20,
+          17,
+          29,
+          13,
+          27,
+          26,
+          30
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "5009": {
+        "tags": [
+          20,
+          17,
+          4,
+          29,
+          28,
+          12,
+          30
+        ],
+        "banTags": [
+          0,
+          24,
+          9,
+          26
+        ]
+      },
+      "5010": {
+        "tags": [
+          20,
+          4,
+          21,
+          17,
+          7,
+          25,
+          14
+        ],
+        "banTags": [
+          0,
+          24,
+          8,
+          22
+        ]
+      },
+      "5011": {
+        "tags": [
+          27,
+          21,
+          31,
+          30,
+          17,
+          7,
+          4,
+          5
+        ],
+        "banTags": [
+          26,
+          0,
+          11,
+          24,
+          18
+        ]
+      },
+      "5012": {
+        "tags": [
+          4,
+          28,
+          17,
+          27,
+          2,
+          7
+        ],
+        "banTags": [
+          10
+        ]
+      },
+      "5013": {
+        "tags": [
+          18,
+          4,
+          32,
+          27,
+          7,
+          5,
+          26
+        ],
+        "banTags": [
+          10
+        ]
+      },
+      "5014": {
+        "tags": [
+          31,
+          4,
+          25,
+          5,
+          11,
+          1,
+          27,
+          20
+        ],
+        "banTags": [
+          10
+        ]
+      },
+      "5015": {
+        "tags": [
+          30,
+          17,
+          7
+        ],
+        "banTags": []
+      },
+      "5016": {
+        "tags": [
+          22,
+          35,
+          34,
+          14,
+          32,
+          3
+        ],
+        "banTags": []
+      },
+      "5017": {
+        "tags": [
+          1,
+          11,
+          16,
+          3,
+          4,
+          9
+        ],
+        "banTags": []
+      },
+      "-1": {
+        "tags": [
+          -4
+        ],
+        "banTags": []
+      },
+      "0": {
+        "tags": [
+          2,
+          3,
+          32
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "1": {
+        "tags": [
+          2,
+          3,
+          7,
+          12,
+          32
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "2": {
+        "tags": [
+          0,
+          2,
+          10,
+          23,
+          22,
+          32
+        ],
+        "banTags": [
+          28,
+          21
+        ]
+      },
+      "3": {
+        "tags": [
+          0,
+          1,
+          3,
+          33
+        ],
+        "banTags": []
+      },
+      "4": {
+        "tags": [
+          1,
+          19,
+          33
+        ],
+        "banTags": [
+          0,
+          2
+        ]
+      },
+      "5": {
+        "tags": [
+          0,
+          2,
+          9,
+          33
+        ],
+        "banTags": []
+      },
+      "6": {
+        "tags": [
+          0,
+          4,
+          10,
+          25,
+          35,
+          33
+        ],
+        "banTags": [
+          3
+        ]
+      },
+      "7": {
+        "tags": [
+          2,
+          3,
+          12,
+          9
+        ],
+        "banTags": []
+      },
+      "8": {
+        "tags": [
+          0,
+          3,
+          9,
+          12
+        ],
+        "banTags": []
+      },
+      "9": {
+        "tags": [
+          1,
+          2,
+          3,
+          9,
+          12,
+          22
+        ],
+        "banTags": []
+      },
+      "10": {
+        "tags": [
+          1,
+          4,
+          11,
+          12,
+          20,
+          18,
+          28
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "11": {
+        "tags": [
+          0,
+          3,
+          6,
+          8,
+          14
+        ],
+        "banTags": []
+      },
+      "12": {
+        "tags": [
+          7,
+          2,
+          3,
+          8,
+          28
+        ],
+        "banTags": []
+      },
+      "14": {
+        "tags": [
+          2,
+          3,
+          6
+        ],
+        "banTags": [
+          21
+        ]
+      },
+      "13": {
+        "tags": [
+          1,
+          2,
+          16,
+          19,
+          6
+        ],
+        "banTags": []
+      },
+      "15": {
+        "tags": [
+          0,
+          22,
+          6,
+          9,
+          10
+        ],
+        "banTags": []
+      },
+      "16": {
+        "tags": [
+          0,
+          3,
+          9
+        ],
+        "banTags": []
+      },
+      "17": {
+        "tags": [
+          0,
+          3,
+          9
+        ],
+        "banTags": []
+      },
+      "18": {
+        "tags": [
+          1,
+          6,
+          19
+        ],
+        "banTags": [
+          21
+        ]
+      },
+      "19": {
+        "tags": [
+          2,
+          21,
+          18,
+          7
+        ],
+        "banTags": [
+          0,
+          1,
+          22
+        ]
+      },
+      "20": {
+        "tags": [
+          0,
+          1,
+          2,
+          4,
+          12,
+          25
+        ],
+        "banTags": []
+      },
+      "21": {
+        "tags": [
+          2,
+          7,
+          12,
+          22
+        ],
+        "banTags": []
+      },
+      "22": {
+        "tags": [
+          0,
+          2,
+          3,
+          16,
+          22
+        ],
+        "banTags": []
+      },
+      "23": {
+        "tags": [
+          1,
+          4,
+          12,
+          20,
+          18
+        ],
+        "banTags": [
+          22
+        ]
+      },
+      "24": {
+        "tags": [
+          0,
+          1,
+          4,
+          10,
+          9
+        ],
+        "banTags": [
+          3,
+          -2
+        ]
+      },
+      "25": {
+        "tags": [
+          0,
+          2,
+          3,
+          9,
+          15
+        ],
+        "banTags": []
+      },
+      "26": {
+        "tags": [
+          0,
+          1,
+          26,
+          9,
+          22,
+          4,
+          23
+        ],
+        "banTags": [
+          21
+        ]
+      },
+      "27": {
+        "tags": [
+          6,
+          24
+        ],
+        "banTags": []
+      },
+      "28": {
+        "tags": [
+          7,
+          18
+        ],
+        "banTags": [
+          0,
+          1,
+          6
+        ]
+      },
+      "29": {
+        "tags": [
+          29,
+          17,
+          20,
+          5,
+          4,
+          27
+        ],
+        "banTags": [
+          0,
+          1
+        ]
+      },
+      "30": {
+        "tags": [
+          0,
+          4,
+          10,
+          16,
+          1,
+          27,
+          23
+        ],
+        "banTags": []
+      },
+      "31": {
+        "tags": [
+          1,
+          15,
+          16,
+          28
+        ],
+        "banTags": []
+      },
+      "32": {
+        "tags": [
+          2,
+          7,
+          20,
+          21
+        ],
+        "banTags": [
+          0,
+          22
+        ]
+      },
+      "33": {
+        "tags": [
+          2,
+          21,
+          17,
+          20,
+          32,
+          31
+        ],
+        "banTags": []
+      },
+      "34": {
+        "tags": [
+          2,
+          7,
+          1,
+          27,
+          17,
+          20,
+          31
+        ],
+        "banTags": [
+          15,
+          0
+        ]
+      },
+      "35": {
+        "tags": [
+          2,
+          3,
+          6,
+          12
+        ],
+        "banTags": []
+      },
+      "36": {
+        "tags": [
+          2,
+          17,
+          25,
+          14
+        ],
+        "banTags": [
+          15
+        ]
+      },
+      "37": {
+        "tags": [
+          1,
+          32,
+          3,
+          7
+        ],
+        "banTags": []
+      },
+      "38": {
+        "tags": [
+          2,
+          15,
+          22,
+          26,
+          33
+        ],
+        "banTags": []
+      },
+      "39": {
+        "tags": [
+          2,
+          3,
+          7
+        ],
+        "banTags": []
+      },
+      "40": {
+        "tags": [
+          0,
+          6,
+          9,
+          3
+        ],
+        "banTags": []
+      },
+      "41": {
+        "tags": [
+          0,
+          6,
+          9,
+          13
+        ],
+        "banTags": [
+          17,
+          21
+        ]
+      },
+      "42": {
+        "tags": [
+          13,
+          9,
+          16,
+          26
+        ],
+        "banTags": [
+          17
+        ]
+      },
+      "43": {
+        "tags": [
+          0,
+          4,
+          5,
+          13,
+          10
+        ],
+        "banTags": [
+          17,
+          21
+        ]
+      },
+      "44": {
+        "tags": [
+          13,
+          9,
+          18,
+          28
+        ],
+        "banTags": [
+          17,
+          31
+        ]
+      },
+      "45": {
+        "tags": [
+          13,
+          9,
+          17
+        ],
+        "banTags": []
+      },
+      "46": {
+        "tags": [
+          13,
+          9
+        ],
+        "banTags": []
+      },
+      "47": {
+        "tags": [
+          0,
+          13,
+          16
+        ],
+        "banTags": []
+      },
+      "48": {
+        "tags": [
+          13,
+          2,
+          26,
+          32
+        ],
+        "banTags": []
+      },
+      "49": {
+        "tags": [
+          0,
+          6,
+          17,
+          14,
+          27
+        ],
+        "banTags": []
+      },
+      "50": {
+        "tags": [
+          14,
+          0,
+          2,
+          22,
+          32
+        ],
+        "banTags": []
+      },
+      "51": {
+        "tags": [
+          0,
+          12,
+          5,
+          4,
+          20,
+          25,
+          30
+        ],
+        "banTags": []
+      },
+      "52": {
+        "tags": [
+          33,
+          13,
+          5,
+          4,
+          20,
+          35
+        ],
+        "banTags": []
+      },
+      "53": {
+        "tags": [
+          17,
+          12,
+          27,
+          30
+        ],
+        "banTags": [
+          0,
+          16,
+          15,
+          1
+        ]
+      },
+      "54": {
+        "tags": [
+          17,
+          12,
+          28
+        ],
+        "banTags": [
+          0,
+          1,
+          15,
+          16
+        ]
+      },
+      "55": {
+        "tags": [
+          17,
+          12,
+          31
+        ],
+        "banTags": [
+          0,
+          1,
+          15,
+          16
+        ]
+      },
+      "56": {
+        "tags": [
+          17,
+          20,
+          30,
+          28
+        ],
+        "banTags": [
+          0,
+          1,
+          2
+        ]
+      },
+      "57": {
+        "tags": [
+          0,
+          25,
+          4,
+          20
+        ],
+        "banTags": []
+      },
+      "58": {
+        "tags": [
+          27,
+          2,
+          21,
+          7
+        ],
+        "banTags": [
+          6
+        ]
+      },
+      "59": {
+        "tags": [
+          0,
+          3,
+          8
+        ],
+        "banTags": []
+      },
+      "60": {
+        "tags": [
+          7,
+          26,
+          3
+        ],
+        "banTags": []
+      },
+      "61": {
+        "tags": [
+          5,
+          25,
+          0,
+          33,
+          4
+        ],
+        "banTags": []
+      },
+      "62": {
+        "tags": [
+          2,
+          24,
+          34,
+          14
+        ],
+        "banTags": [
+          17,
+          31
+        ]
+      },
+      "63": {
+        "tags": [
+          0,
+          26,
+          5,
+          14,
+          4,
+          29
+        ],
+        "banTags": []
+      },
+      "64": {
+        "tags": [
+          2,
+          22,
+          34,
+          14
+        ],
+        "banTags": [
+          17,
+          31,
+          21
+        ]
+      },
+      "65": {
+        "tags": [
+          1,
+          22,
+          34,
+          14,
+          35
+        ],
+        "banTags": [
+          17,
+          31,
+          21,
+          0
+        ]
+      },
+      "66": {
+        "tags": [
+          14,
+          25,
+          9,
+          28,
+          17,
+          27
+        ],
+        "banTags": []
+      },
+      "67": {
+        "tags": [
+          13,
+          17,
+          20,
+          21,
+          29
+        ],
+        "banTags": []
+      },
+      "68": {
+        "tags": [
+          2,
+          16,
+          14,
+          20,
+          27
+        ],
+        "banTags": []
+      },
+      "69": {
+        "tags": [
+          13,
+          17,
+          20,
+          24,
+          29
+        ],
+        "banTags": []
+      },
+      "70": {
+        "tags": [
+          13,
+          17,
+          20,
+          29,
+          4
+        ],
+        "banTags": []
+      },
+      "71": {
+        "tags": [
+          2,
+          3,
+          14,
+          25
+        ],
+        "banTags": []
+      },
+      "72": {
+        "tags": [
+          2,
+          3,
+          14,
+          25
+        ],
+        "banTags": []
+      }
+    },
+    "beverages": {
+      "0": {
+        "tags": [
+          -1
+        ],
+        "banTags": []
+      },
+      "1": {
+        "tags": [
+          0,
+          3,
+          7,
+          8,
+          12,
+          13,
+          15
+        ],
+        "banTags": []
+      },
+      "2": {
+        "tags": [
+          0,
+          3,
+          5,
+          7,
+          12,
+          13,
+          15
+        ],
+        "banTags": []
+      },
+      "3": {
+        "tags": [
+          0,
+          3,
+          6,
+          7,
+          16,
+          13,
+          14,
+          15
+        ],
+        "banTags": []
+      },
+      "4": {
+        "tags": [
+          0,
+          3,
+          10,
+          15
+        ],
+        "banTags": []
+      },
+      "5": {
+        "tags": [
+          1,
+          3,
+          4,
+          6,
+          11
+        ],
+        "banTags": []
+      },
+      "6": {
+        "tags": [
+          1,
+          3,
+          4,
+          9,
+          12
+        ],
+        "banTags": []
+      },
+      "7": {
+        "tags": [
+          2,
+          3,
+          4,
+          6,
+          11
+        ],
+        "banTags": []
+      },
+      "8": {
+        "tags": [
+          0,
+          3,
+          7,
+          8
+        ],
+        "banTags": []
+      },
+      "9": {
+        "tags": [
+          1,
+          3,
+          4,
+          5,
+          11
+        ],
+        "banTags": []
+      },
+      "10": {
+        "tags": [
+          1,
+          3,
+          4,
+          6,
+          11
+        ],
+        "banTags": []
+      },
+      "11": {
+        "tags": [
+          2,
+          3,
+          8,
+          11
+        ],
+        "banTags": []
+      },
+      "12": {
+        "tags": [
+          1,
+          3,
+          4,
+          6,
+          14
+        ],
+        "banTags": []
+      },
+      "13": {
+        "tags": [
+          -1,
+          12,
+          4,
+          19
+        ],
+        "banTags": []
+      },
+      "14": {
+        "tags": [
+          -1,
+          19,
+          13,
+          15,
+          3
+        ],
+        "banTags": []
+      },
+      "15": {
+        "tags": [
+          1,
+          4,
+          8
+        ],
+        "banTags": []
+      },
+      "16": {
+        "tags": [
+          1,
+          7,
+          3,
+          12,
+          15,
+          8
+        ],
+        "banTags": []
+      },
+      "17": {
+        "tags": [
+          2,
+          3,
+          7,
+          8,
+          15,
+          17
+        ],
+        "banTags": []
+      },
+      "18": {
+        "tags": [
+          1,
+          3,
+          7,
+          13,
+          18
+        ],
+        "banTags": []
+      },
+      "19": {
+        "tags": [
+          0,
+          13,
+          4,
+          3,
+          17
+        ],
+        "banTags": []
+      },
+      "20": {
+        "tags": [
+          1,
+          6,
+          3,
+          4,
+          17,
+          13
+        ],
+        "banTags": []
+      },
+      "21": {
+        "tags": [
+          2,
+          4,
+          14,
+          5
+        ],
+        "banTags": []
+      },
+      "22": {
+        "tags": [
+          -1,
+          17,
+          4
+        ],
+        "banTags": []
+      },
+      "23": {
+        "tags": [
+          -1,
+          3,
+          18,
+          16
+        ],
+        "banTags": []
+      },
+      "24": {
+        "tags": [
+          -1,
+          11
+        ],
+        "banTags": []
+      },
+      "25": {
+        "tags": [
+          -1,
+          12
+        ],
+        "banTags": []
+      },
+      "26": {
+        "tags": [
+          -1,
+          16,
+          18
+        ],
+        "banTags": []
+      },
+      "27": {
+        "tags": [
+          -1,
+          11,
+          16,
+          19,
+          3,
+          13,
+          12
+        ],
+        "banTags": []
+      },
+      "28": {
+        "tags": [
+          19,
+          13,
+          18,
+          -1
+        ],
+        "banTags": []
+      },
+      "1000": {
+        "tags": [
+          1,
+          6,
+          12,
+          3,
+          11,
+          13,
+          17
+        ],
+        "banTags": []
+      },
+      "1001": {
+        "tags": [
+          -1,
+          15,
+          18,
+          4,
+          3,
+          19
+        ],
+        "banTags": []
+      },
+      "1003": {
+        "tags": [
+          -1,
+          13,
+          3,
+          17
+        ],
+        "banTags": []
+      },
+      "1004": {
+        "tags": [
+          1,
+          15,
+          16,
+          9
+        ],
+        "banTags": []
+      },
+      "1002": {
+        "tags": [
+          -1,
+          13,
+          3
+        ],
+        "banTags": []
+      },
+      "2001": {
+        "tags": [
+          -1,
+          13,
+          11,
+          19
+        ],
+        "banTags": []
+      },
+      "2002": {
+        "tags": [
+          -1,
+          13,
+          12,
+          18
+        ],
+        "banTags": []
+      },
+      "2000": {
+        "tags": [
+          2,
+          3,
+          5,
+          14,
+          17
+        ],
+        "banTags": []
+      },
+      "3000": {
+        "tags": [
+          -1,
+          3,
+          12
+        ],
+        "banTags": []
+      },
+      "3001": {
+        "tags": [
+          10,
+          1,
+          11
+        ],
+        "banTags": []
+      },
+      "4000": {
+        "tags": [
+          2,
+          5
+        ],
+        "banTags": []
+      },
+      "4001": {
+        "tags": [
+          0,
+          11,
+          12,
+          17,
+          13
+        ],
+        "banTags": []
+      },
+      "5000": {
+        "tags": [
+          0,
+          16,
+          14,
+          17
+        ],
+        "banTags": []
+      },
+      "5001": {
+        "tags": [
+          19,
+          2,
+          4,
+          8
+        ],
+        "banTags": []
+      },
+      "5002": {
+        "tags": [
+          16,
+          18,
+          7,
+          0
+        ],
+        "banTags": []
+      },
+      "5003": {
+        "tags": [
+          1,
+          18,
+          12,
+          10
+        ],
+        "banTags": []
+      },
+      "5004": {
+        "tags": [
+          18,
+          19,
+          -1,
+          15
+        ],
+        "banTags": []
+      }
+    },
+    "ingredients": {
+      "1000": {
+        "tags": [
+          3,
+          2,
+          7
+        ],
+        "banTags": []
+      },
+      "1001": {
+        "tags": [
+          1,
+          16,
+          11
+        ],
+        "banTags": []
+      },
+      "1002": {
+        "tags": [
+          1,
+          4,
+          5,
+          16,
+          11
+        ],
+        "banTags": []
+      },
+      "1003": {
+        "tags": [
+          15
+        ],
+        "banTags": []
+      },
+      "1004": {
+        "tags": [
+          3,
+          17,
+          13
+        ],
+        "banTags": []
+      },
+      "1005": {
+        "tags": [
+          1,
+          4,
+          16
+        ],
+        "banTags": []
+      },
+      "2001": {
+        "tags": [
+          2000,
+          31
+        ],
+        "banTags": []
+      },
+      "2002": {
+        "tags": [
+          4,
+          15,
+          16
+        ],
+        "banTags": []
+      },
+      "3001": {
+        "tags": [
+          9
+        ],
+        "banTags": []
+      },
+      "3002": {
+        "tags": [
+          19,
+          7,
+          4
+        ],
+        "banTags": []
+      },
+      "3003": {
+        "tags": [
+          3,
+          2
+        ],
+        "banTags": []
+      },
+      "3000": {
+        "tags": [
+          19,
+          7,
+          25
+        ],
+        "banTags": []
+      },
+      "4000": {
+        "tags": [
+          15,
+          28
+        ],
+        "banTags": []
+      },
+      "4003": {
+        "tags": [
+          4001,
+          2
+        ],
+        "banTags": []
+      },
+      "4004": {
+        "tags": [
+          2
+        ],
+        "banTags": []
+      },
+      "4001": {
+        "tags": [
+          3
+        ],
+        "banTags": []
+      },
+      "4002": {
+        "tags": [
+          29,
+          20
+        ],
+        "banTags": []
+      },
+      "5000": {
+        "tags": [
+          17,
+          27
+        ],
+        "banTags": []
+      },
+      "5001": {
+        "tags": [
+          2,
+          3
+        ],
+        "banTags": []
+      },
+      "5003": {
+        "tags": [
+          21,
+          29
+        ],
+        "banTags": []
+      },
+      "5004": {
+        "tags": [
+          26,
+          7
+        ],
+        "banTags": []
+      },
+      "5002": {
+        "tags": [
+          5000
+        ],
+        "banTags": []
+      },
+      "5005": {
+        "tags": [
+          5000
+        ],
+        "banTags": []
+      },
+      "0": {
+        "tags": [
+          18
+        ],
+        "banTags": []
+      },
+      "1": {
+        "tags": [
+          0
+        ],
+        "banTags": []
+      },
+      "2": {
+        "tags": [
+          0
+        ],
+        "banTags": []
+      },
+      "3": {
+        "tags": [
+          0
+        ],
+        "banTags": []
+      },
+      "4": {
+        "tags": [
+          0
+        ],
+        "banTags": []
+      },
+      "5": {
+        "tags": [
+          2,
+          3,
+          7
+        ],
+        "banTags": []
+      },
+      "6": {
+        "tags": [
+          2,
+          3
+        ],
+        "banTags": []
+      },
+      "7": {
+        "tags": [
+          2,
+          16
+        ],
+        "banTags": []
+      },
+      "8": {
+        "tags": [
+          9,
+          2
+        ],
+        "banTags": []
+      },
+      "9": {
+        "tags": [
+          2,
+          8
+        ],
+        "banTags": []
+      },
+      "10": {
+        "tags": [
+          16,
+          2
+        ],
+        "banTags": []
+      },
+      "11": {
+        "tags": [
+          16,
+          1
+        ],
+        "banTags": []
+      },
+      "12": {
+        "tags": [
+          1,
+          19,
+          16
+        ],
+        "banTags": []
+      },
+      "13": {
+        "tags": [
+          1,
+          4,
+          16
+        ],
+        "banTags": []
+      },
+      "14": {
+        "tags": [
+          1,
+          16,
+          4
+        ],
+        "banTags": []
+      },
+      "15": {
+        "tags": [
+          0,
+          5,
+          10
+        ],
+        "banTags": []
+      },
+      "16": {
+        "tags": [
+          0,
+          5,
+          4
+        ],
+        "banTags": []
+      },
+      "17": {
+        "tags": [
+          2,
+          16,
+          26
+        ],
+        "banTags": []
+      },
+      "18": {
+        "tags": [
+          2,
+          5,
+          10,
+          16,
+          26,
+          4
+        ],
+        "banTags": []
+      },
+      "19": {
+        "tags": [
+          1,
+          11,
+          5,
+          16,
+          4
+        ],
+        "banTags": []
+      },
+      "20": {
+        "tags": [
+          1,
+          11,
+          16
+        ],
+        "banTags": []
+      },
+      "21": {
+        "tags": [
+          31,
+          17
+        ],
+        "banTags": []
+      },
+      "22": {
+        "tags": [
+          20
+        ],
+        "banTags": []
+      },
+      "23": {
+        "tags": [
+          1,
+          16
+        ],
+        "banTags": []
+      },
+      "24": {
+        "tags": [
+          17
+        ],
+        "banTags": []
+      },
+      "25": {
+        "tags": [
+          24
+        ],
+        "banTags": []
+      },
+      "26": {
+        "tags": [
+          5,
+          29,
+          27,
+          4
+        ],
+        "banTags": []
+      },
+      "27": {
+        "tags": [
+          7
+        ],
+        "banTags": []
+      },
+      "28": {
+        "tags": [
+          2,
+          7
+        ],
+        "banTags": []
+      },
+      "29": {
+        "tags": [
+          6
+        ],
+        "banTags": []
+      },
+      "30": {
+        "tags": [
+          9
+        ],
+        "banTags": []
+      },
+      "31": {
+        "tags": [
+          20
+        ],
+        "banTags": []
+      },
+      "32": {
+        "tags": [],
+        "banTags": []
+      },
+      "33": {
+        "tags": [
+          27,
+          7,
+          29,
+          25
+        ],
+        "banTags": []
+      },
+      "34": {
+        "tags": [
+          21
+        ],
+        "banTags": []
+      },
+      "35": {
+        "tags": [
+          34
+        ],
+        "banTags": []
+      },
+      "36": {
+        "tags": [
+          31,
+          17
+        ],
+        "banTags": []
+      },
+      "-1": {
+        "tags": [
+          30,
+          27,
+          20,
+          19
+        ],
+        "banTags": []
+      },
+      "2000": {
+        "tags": [
+          25,
+          4,
+          5,
+          7,
+          29
+        ],
+        "banTags": []
+      }
+    }
+  }
+}

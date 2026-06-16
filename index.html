@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystia's Izakaya Save Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Izakaya Save Editor</h1>
+            <input type="file" id="saveUpload" accept=".memory,.json,.txt">
+            <span id="status" class="status-text">Waiting for save file...</span>
+        </div>
+        <button id="exportBtn" class="btn" style="display: none;">Download Save</button>
+    </div>
+
+    <div class="tabs" id="tabContainer">
+        <button class="tab-btn active" data-target="player">Player Profile</button>
+        <button class="tab-btn" data-target="bonds">Bonds</button> <button class="tab-btn" data-target="merchants">Merchants</button>
+        <button class="tab-btn" data-target="ingredients">Ingredients</button>
+        <button class="tab-btn" data-target="beverages">Beverages</button>
+        <button class="tab-btn" data-target="foods">Foods</button>
+        <button class="tab-btn" data-target="cookers">Cookers</button>
+        <button class="tab-btn" data-target="items">Items</button>
+    </div>
+
+    <div class="toolbar" id="toolbar">
+        <select id="addItemSelect">
+            <option value="">-- Select an item to add --</option>
+        </select>
+        <button id="addItemBtn" class="btn">Add Item</button>
+    </div>
+
+    <div class="item-grid" id="editorContainer"></div>
+</div>
+
+<script src="js/player.js"></script>
+<script src="js/merchants.js"></script>
+<script src="js/inventory.js"></script>
+<script src="js/bonds.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

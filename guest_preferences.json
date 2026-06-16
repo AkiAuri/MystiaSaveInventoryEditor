@@ -1,0 +1,1200 @@
+{
+  "1000": {
+    "RevealedFoodTags": [
+      24,
+      1,
+      4,
+      8,
+      15,
+      19
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      1,
+      2,
+      6,
+      11
+    ]
+  },
+  "1001": {
+    "RevealedFoodTags": [
+      0,
+      10,
+      6,
+      -1,
+      8
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      1,
+      2,
+      11
+    ]
+  },
+  "1005": {
+    "RevealedFoodTags": [
+      12,
+      17,
+      20,
+      3,
+      29
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      0,
+      12,
+      11,
+      13,
+      15,
+      18,
+      16,
+      6
+    ]
+  },
+  "1002": {
+    "RevealedFoodTags": [
+      3,
+      4,
+      13,
+      17,
+      25
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0,
+      8,
+      18
+    ]
+  },
+  "1004": {
+    "RevealedFoodTags": [
+      7,
+      10,
+      25,
+      30,
+      12
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0,
+      1,
+      11,
+      3,
+      17
+    ]
+  },
+  "1003": {
+    "RevealedFoodTags": [
+      9,
+      -1,
+      0,
+      4,
+      5,
+      18,
+      16,
+      23,
+      27
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      11,
+      14,
+      5
+    ]
+  },
+  "1007": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "1006": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "1100": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2000": {
+    "RevealedFoodTags": [
+      17,
+      16,
+      24,
+      20,
+      18
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0,
+      1,
+      10,
+      13
+    ]
+  },
+  "2001": {
+    "RevealedFoodTags": [
+      2000,
+      15,
+      34,
+      16,
+      31,
+      0
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      4,
+      11,
+      15,
+      14
+    ]
+  },
+  "2002": {
+    "RevealedFoodTags": [
+      8,
+      19,
+      5,
+      12,
+      -1,
+      23,
+      35
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      10,
+      17,
+      6
+    ]
+  },
+  "2003": {
+    "RevealedFoodTags": [
+      3,
+      28,
+      17,
+      29,
+      30,
+      23
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      15,
+      16,
+      19
+    ]
+  },
+  "2004": {
+    "RevealedFoodTags": [
+      16,
+      17,
+      1,
+      11,
+      24,
+      29
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0,
+      12,
+      6
+    ]
+  },
+  "2005": {
+    "RevealedFoodTags": [
+      0,
+      34,
+      15,
+      6,
+      22,
+      23
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      1,
+      4,
+      7
+    ]
+  },
+  "2006": {
+    "RevealedFoodTags": [
+      17,
+      15,
+      18,
+      24,
+      29,
+      27
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      15,
+      5,
+      16
+    ]
+  },
+  "2007": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2008": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2009": {
+    "RevealedFoodTags": [
+      16,
+      17,
+      1,
+      11,
+      24,
+      29
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0,
+      12,
+      6
+    ]
+  },
+  "3000": {
+    "RevealedFoodTags": [
+      17,
+      24,
+      3,
+      9,
+      27,
+      23,
+      20
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      1,
+      12,
+      3,
+      17
+    ]
+  },
+  "3001": {
+    "RevealedFoodTags": [
+      9,
+      15,
+      23,
+      0,
+      30,
+      4,
+      16
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      8,
+      3,
+      14
+    ]
+  },
+  "3002": {
+    "RevealedFoodTags": [
+      24,
+      0,
+      16,
+      18,
+      27,
+      19,
+      30,
+      20
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      17,
+      4,
+      11,
+      5
+    ]
+  },
+  "3003": {
+    "RevealedFoodTags": [
+      12,
+      35,
+      5,
+      7,
+      10,
+      4
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      11,
+      4,
+      16,
+      1
+    ]
+  },
+  "3004": {
+    "RevealedFoodTags": [
+      17,
+      2,
+      28,
+      14,
+      27,
+      5,
+      30
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      18,
+      6,
+      0,
+      12
+    ]
+  },
+  "3005": {
+    "RevealedFoodTags": [
+      12,
+      9,
+      23,
+      6,
+      33,
+      3,
+      19
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      10,
+      15,
+      5,
+      2
+    ]
+  },
+  "3006": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "3007": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "3008": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "3009": {
+    "RevealedFoodTags": [
+      0,
+      12,
+      1,
+      3,
+      8,
+      31,
+      5
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      17,
+      4,
+      5,
+      2
+    ]
+  },
+  "3010": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "3011": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "3012": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "4000": {
+    "RevealedFoodTags": [
+      0,
+      12,
+      19,
+      3,
+      8,
+      20
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      5,
+      19,
+      3
+    ]
+  },
+  "4001": {
+    "RevealedFoodTags": [
+      17,
+      29,
+      26,
+      20,
+      19,
+      21,
+      28,
+      4001
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      12,
+      13,
+      15
+    ]
+  },
+  "4002": {
+    "RevealedFoodTags": [
+      7,
+      4,
+      29,
+      5,
+      30,
+      13,
+      27
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      18,
+      9,
+      8,
+      7
+    ]
+  },
+  "4003": {
+    "RevealedFoodTags": [
+      24,
+      8,
+      6,
+      22,
+      35,
+      27,
+      23
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      1,
+      5,
+      14,
+      11
+    ]
+  },
+  "4004": {
+    "RevealedFoodTags": [
+      17,
+      12,
+      5,
+      28,
+      25,
+      20,
+      35
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      17,
+      4,
+      0,
+      16
+    ]
+  },
+  "4005": {
+    "RevealedFoodTags": [
+      0,
+      12,
+      10,
+      3,
+      21,
+      20
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      1,
+      6,
+      11,
+      3
+    ]
+  },
+  "4006": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "4007": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "4008": {
+    "RevealedFoodTags": [
+      13,
+      4,
+      18,
+      17,
+      5
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      13,
+      17,
+      8,
+      12,
+      2
+    ]
+  },
+  "4009": {
+    "RevealedFoodTags": [
+      0
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0
+    ]
+  },
+  "4010": {
+    "RevealedFoodTags": [
+      0
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0
+    ]
+  },
+  "4011": {
+    "RevealedFoodTags": [
+      0
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0
+    ]
+  },
+  "4012": {
+    "RevealedFoodTags": [
+      0
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0
+    ]
+  },
+  "4013": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "4014": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "4015": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "4016": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "5000": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "5001": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "5002": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "5003": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "5004": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "5005": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2500": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2501": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2502": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2503": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2504": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2505": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2506": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2507": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2508": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "2509": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "0": {
+    "RevealedFoodTags": [
+      17,
+      18,
+      24,
+      0
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0,
+      3
+    ]
+  },
+  "1": {
+    "RevealedFoodTags": [
+      0,
+      18,
+      24,
+      9,
+      19
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      15,
+      16
+    ]
+  },
+  "2": {
+    "RevealedFoodTags": [
+      0,
+      1,
+      6,
+      17,
+      33
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      14,
+      12
+    ]
+  },
+  "3": {
+    "RevealedFoodTags": [
+      7,
+      12,
+      17,
+      25,
+      4,
+      32
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      6,
+      4
+    ]
+  },
+  "4": {
+    "RevealedFoodTags": [
+      14,
+      12,
+      2,
+      7,
+      3,
+      25
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      5,
+      6,
+      9
+    ]
+  },
+  "5": {
+    "RevealedFoodTags": [
+      25,
+      12,
+      3,
+      8
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      11,
+      17,
+      1
+    ]
+  },
+  "6": {
+    "RevealedFoodTags": [
+      3,
+      9,
+      16
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      5,
+      10
+    ]
+  },
+  "7": {
+    "RevealedFoodTags": [
+      17,
+      9,
+      -2,
+      27,
+      4
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      0,
+      4
+    ]
+  },
+  "8": {
+    "RevealedFoodTags": [
+      0,
+      12,
+      8,
+      23,
+      28
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      11
+    ]
+  },
+  "9": {
+    "RevealedFoodTags": [
+      2,
+      7,
+      17,
+      20,
+      5,
+      -3,
+      31
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      7
+    ]
+  },
+  "10": {
+    "RevealedFoodTags": [
+      26,
+      5,
+      12,
+      6,
+      22
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0,
+      3
+    ]
+  },
+  "12": {
+    "RevealedFoodTags": [
+      0,
+      2,
+      1,
+      -4
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "13": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "14": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "17": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "18": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "19": {
+    "RevealedFoodTags": [
+      30
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      11
+    ]
+  },
+  "20": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "21": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "15": {
+    "RevealedFoodTags": [
+      14,
+      23,
+      0,
+      9
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      19,
+      4,
+      17
+    ]
+  },
+  "28": {
+    "RevealedFoodTags": [
+      21,
+      17,
+      20,
+      24
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      13,
+      12,
+      3
+    ]
+  },
+  "27": {
+    "RevealedFoodTags": [
+      13,
+      17,
+      20,
+      29,
+      4
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      9,
+      16,
+      7
+    ]
+  },
+  "24": {
+    "RevealedFoodTags": [
+      22,
+      35,
+      34,
+      31,
+      33
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      15,
+      14,
+      5
+    ]
+  },
+  "25": {
+    "RevealedFoodTags": [
+      12,
+      25,
+      5,
+      27
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      18,
+      6,
+      17
+    ]
+  },
+  "16": {
+    "RevealedFoodTags": [
+      29,
+      5,
+      17,
+      21,
+      28
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      12,
+      13,
+      -1
+    ]
+  },
+  "29": {
+    "RevealedFoodTags": [
+      29,
+      5,
+      17,
+      21,
+      28
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      12,
+      13,
+      -1
+    ]
+  },
+  "22": {
+    "RevealedFoodTags": [
+      17,
+      13,
+      18,
+      4
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      13,
+      8,
+      17,
+      12
+    ]
+  },
+  "23": {
+    "RevealedFoodTags": [
+      0,
+      1,
+      4,
+      5,
+      12,
+      14,
+      9,
+      -1
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      3,
+      2,
+      7
+    ]
+  },
+  "11": {
+    "RevealedFoodTags": [
+      5,
+      12
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      11
+    ]
+  },
+  "39": {
+    "RevealedFoodTags": [
+      3,
+      7,
+      16,
+      23
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      4,
+      12
+    ]
+  },
+  "40": {
+    "RevealedFoodTags": [
+      0,
+      1,
+      4,
+      5,
+      12,
+      14,
+      9,
+      -1
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      3,
+      2,
+      7
+    ]
+  },
+  "26": {
+    "RevealedFoodTags": [
+      0
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      0
+    ]
+  },
+  "30": {
+    "RevealedFoodTags": [
+      1,
+      0,
+      29,
+      17
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      12,
+      13,
+      3,
+      14
+    ]
+  },
+  "31": {
+    "RevealedFoodTags": [
+      28,
+      21,
+      26,
+      17,
+      3,
+      29
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      12,
+      13,
+      15
+    ]
+  },
+  "32": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "33": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "34": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "35": {
+    "RevealedFoodTags": [],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": []
+  },
+  "36": {
+    "RevealedFoodTags": [
+      3,
+      1,
+      14,
+      34
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      -1,
+      13,
+      16
+    ]
+  },
+  "37": {
+    "RevealedFoodTags": [
+      0,
+      8,
+      12,
+      10,
+      23,
+      -3
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      2,
+      3,
+      4
+    ]
+  },
+  "38": {
+    "RevealedFoodTags": [
+      5,
+      8,
+      13,
+      14,
+      25,
+      30
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      3,
+      1,
+      7,
+      8
+    ]
+  },
+  "41": {
+    "RevealedFoodTags": [
+      12,
+      19,
+      5,
+      29,
+      21,
+      20
+    ],
+    "RevealedHateFoodTags": [],
+    "RevealedBevTags": [
+      5,
+      1,
+      17,
+      13
+    ]
+  }
+}
