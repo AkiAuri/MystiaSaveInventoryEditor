@@ -15,7 +15,6 @@ function renderInventory(container, category) {
 
     const inventory = saveState.storagePartial[category] || {};
 
-    // 1. Loop through user's current items
     for (const [id, amount] of Object.entries(inventory)) {
         const details = getItemDetails(category, id);
 
@@ -35,8 +34,6 @@ function renderInventory(container, category) {
         let tagsHtml = '';
         if (globalMechanics.item_tags && globalMechanics.item_tags[category] && globalMechanics.item_tags[category][id]) {
             const mechData = globalMechanics.item_tags[category][id];
-
-            // Determine if we are looking up food tags or beverage tags
             let tagDictKey = (category === 'beverages') ? 'beverage_tags' : 'food_tags';
 
             if (mechData.tags && mechData.tags.length > 0) {
@@ -68,7 +65,6 @@ function renderInventory(container, category) {
         container.appendChild(card);
     }
 
-    // 2. Dynamically update the Add Item Dropdown
     updateAddDropdown(category);
 }
 
@@ -101,7 +97,6 @@ function updateAddDropdown(category) {
     }
 }
 
-// Attach the Add Button listener ONCE when the script loads
 document.getElementById('addItemBtn').addEventListener('click', () => {
     const select = document.getElementById('addItemSelect');
     const idToAdd = select.value;

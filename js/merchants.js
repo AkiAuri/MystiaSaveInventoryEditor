@@ -1,10 +1,9 @@
 // Function to render the Merchants Tab
 function renderMerchants(container) {
-    // Set up a wider grid for merchant names
     container.style.gridTemplateColumns = "repeat(auto-fill, minmax(250px, 1fr))";
     container.style.maxWidth = "none";
 
-    // 1. Generate the Global Cheat Button
+    // 1. Global Cheat Button
     const cheatWrapper = document.createElement('div');
     cheatWrapper.style.gridColumn = "1 / -1";
     cheatWrapper.style.marginBottom = "20px";
@@ -21,11 +20,10 @@ function renderMerchants(container) {
         for (const dlc in dlcData) {
             const merchants = dlcData[dlc].alltrackedMerchants;
             if (merchants) {
-                // Force every merchant's float value to 0.0
                 merchants.forEach(m => m.currentPriceMultiplier = 0.0);
             }
         }
-        refreshUI(); // Trigger UI reload from main.js
+        refreshUI();
     };
 
     cheatWrapper.appendChild(cheatBtn);
@@ -42,7 +40,6 @@ function renderMerchants(container) {
             const card = document.createElement('div');
             card.className = 'item-card';
 
-            // Clean up Unity internal ID names
             let cleanName = merchant.key.replace("Merchant_", "").split("_").reverse().join(" (") + ")";
 
             card.innerHTML = `
@@ -53,7 +50,7 @@ function renderMerchants(container) {
 
             const input = document.createElement('input');
             input.type = 'number';
-            input.step = '0.01'; // Allow float decimals
+            input.step = '0.01';
             input.value = merchant.currentPriceMultiplier;
 
             input.addEventListener('change', (e) => {

@@ -4,7 +4,7 @@ let globalMechanics = {};
 let saveState = {};
 let currentCategory = 'player';
 
-// 1. Load Dictionary and Mechanics
+// Load both JSON files before allowing interaction
 Promise.all([
     fetch('mystia_dictionary.json').then(res => res.json()),
     fetch('mystia_mechanics.json').then(res => res.json())
@@ -12,9 +12,9 @@ Promise.all([
     globalDictionary = dictData;
     globalMechanics = mechData;
     console.log("Dictionary and Mechanics loaded successfully!");
-}).catch(err => alert("Error loading JSON files! Ensure your local server is running."));
+}).catch(err => alert("Error loading JSON files! Please ensure your python scripts were run and local server is active."));
 
-// 2. Load Save File
+// Load Save File
 document.getElementById('saveUpload').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -34,7 +34,7 @@ document.getElementById('saveUpload').addEventListener('change', function(event)
     reader.readAsText(file);
 });
 
-// 3. Tab Routing Logic
+// Tab Routing Logic
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -44,7 +44,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     });
 });
 
-// 4. The Master Renderer
+// Master Renderer
 function refreshUI() {
     const container = document.getElementById('editorContainer');
     const toolbar = document.getElementById('toolbar');
@@ -68,7 +68,7 @@ function refreshUI() {
     }
 }
 
-// 5. Export Logic
+// Export Logic
 document.getElementById('exportBtn').addEventListener('click', () => {
     const modifiedJson = JSON.stringify(saveState, null, 2);
     const blob = new Blob([modifiedJson], { type: "application/octet-stream" });

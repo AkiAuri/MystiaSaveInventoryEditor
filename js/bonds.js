@@ -10,22 +10,22 @@ function renderBonds(container) {
     container.style.gridTemplateColumns = "repeat(auto-fill, minmax(320px, 1fr))";
     container.style.maxWidth = "none";
 
-    // --- 1. THE CHEAT BUTTON ---
+    // --- 1. CHEAT BUTTONS ---
     const cheatWrapper = document.createElement('div');
     cheatWrapper.style.gridColumn = "1 / -1";
     cheatWrapper.style.marginBottom = "20px";
+    cheatWrapper.style.display = "flex";
+    cheatWrapper.style.gap = "10px";
 
-    const cheatBtn = document.createElement('button');
-    cheatBtn.className = "btn btn-danger";
-    cheatBtn.innerText = "📖 Reveal All Preferences for Unlocked Guests";
-    cheatBtn.style.width = "100%";
-    cheatBtn.style.padding = "15px";
-    cheatBtn.style.fontSize = "18px";
+    const prefCheatBtn = document.createElement('button');
+    prefCheatBtn.className = "btn btn-danger";
+    prefCheatBtn.innerText = "📖 Reveal All Preferences for Unlocked Guests";
+    prefCheatBtn.style.flex = "1";
+    prefCheatBtn.style.padding = "15px";
+    prefCheatBtn.style.fontSize = "16px";
 
-    cheatBtn.onclick = () => {
-        // Pointing to the new nested guest_preferences object inside mechanics
+    prefCheatBtn.onclick = () => {
         const prefs = globalMechanics.guest_preferences || {};
-
         for (const charId in bondsData) {
             if (prefs[charId]) {
                 bondsData[charId].RevealedFoodTags = [...(prefs[charId].RevealedFoodTags || [])];
@@ -36,7 +36,24 @@ function renderBonds(container) {
         refreshUI();
     };
 
-    cheatWrapper.appendChild(cheatBtn);
+    const expCheatBtn = document.createElement('button');
+    expCheatBtn.className = "btn btn-danger";
+    expCheatBtn.innerText = "⭐ Max All Bonds (Brute Force)";
+    expCheatBtn.style.flex = "1";
+    expCheatBtn.style.padding = "15px";
+    expCheatBtn.style.fontSize = "16px";
+
+    expCheatBtn.onclick = () => {
+        for (const charId in bondsData) {
+            // Force values to absolute limits
+            bondsData[charId].CurrentBondLevel = 5;
+            bondsData[charId].CurrentBondExp = 9999;
+        }
+        refreshUI();
+    };
+
+    cheatWrapper.appendChild(prefCheatBtn);
+    cheatWrapper.appendChild(expCheatBtn);
     container.appendChild(cheatWrapper);
 
     // --- 2. TAG DECODING HELPER ---
