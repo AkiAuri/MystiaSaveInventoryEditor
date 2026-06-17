@@ -1,18 +1,18 @@
 // --- GLOBAL STATE ---
 let globalDictionary = {};
-let guestPreferences = {}; // NEW: Holds the cheat sheet
+let globalMechanics = {};
 let saveState = {};
 let currentCategory = 'player';
 
-// Load both JSON files before doing anything else
+// 1. Load Dictionary and Mechanics
 Promise.all([
     fetch('mystia_dictionary.json').then(res => res.json()),
-    fetch('guest_preferences.json').then(res => res.json())
-]).then(([dictData, prefData]) => {
+    fetch('mystia_mechanics.json').then(res => res.json())
+]).then(([dictData, mechData]) => {
     globalDictionary = dictData;
-    guestPreferences = prefData;
-    console.log("Dictionary and Preferences loaded successfully!");
-}).catch(err => alert("Error loading JSON files!"));
+    globalMechanics = mechData;
+    console.log("Dictionary and Mechanics loaded successfully!");
+}).catch(err => alert("Error loading JSON files! Ensure your local server is running."));
 
 // 2. Load Save File
 document.getElementById('saveUpload').addEventListener('change', function(event) {
@@ -50,23 +50,21 @@ function refreshUI() {
     const toolbar = document.getElementById('toolbar');
     container.innerHTML = '';
 
-    // Route to the correct sub-file based on the tab
     if (currentCategory === 'player') {
         toolbar.style.display = 'none';
-        renderPlayerProfile(container); // Found in player.js
+        renderPlayerProfile(container);
     }
     else if (currentCategory === 'merchants') {
         toolbar.style.display = 'none';
-        renderMerchants(container); // Found in merchants.js
+        renderMerchants(container);
     }
     else if (currentCategory === 'bonds') {
         toolbar.style.display = 'none';
-        renderBonds(container); // Found in bonds.js
+        renderBonds(container);
     }
     else {
-        // Assume it is an inventory tab
         toolbar.style.display = 'flex';
-        renderInventory(container, currentCategory); // Found in inventory.js
+        renderInventory(container, currentCategory);
     }
 }
 

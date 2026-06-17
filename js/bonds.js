@@ -1,6 +1,5 @@
 // Function to render the Bonds / Special Guests Tab
 function renderBonds(container) {
-    // Determine where the game saved the specialSkinSelection (Usually inside albumPartial)
     const bondsData = saveState.albumPartial?.specialSkinSelection || saveState.specialSkinSelection;
 
     if (!bondsData) {
@@ -8,7 +7,6 @@ function renderBonds(container) {
         return;
     }
 
-    // Use a slightly wider card layout to fit the text tags nicely
     container.style.gridTemplateColumns = "repeat(auto-fill, minmax(320px, 1fr))";
     container.style.maxWidth = "none";
 
@@ -25,30 +23,28 @@ function renderBonds(container) {
     cheatBtn.style.fontSize = "18px";
 
     cheatBtn.onclick = () => {
-        // Loop through all guests in the save file
+        // Pointing to the new nested guest_preferences object inside mechanics
+        const prefs = globalMechanics.guest_preferences || {};
+
         for (const charId in bondsData) {
-            // If we have their preferences in our cheat sheet, overwrite the save data
-            if (guestPreferences[charId]) {
-                bondsData[charId].RevealedFoodTags = [...(guestPreferences[charId].RevealedFoodTags || [])];
-                bondsData[charId].RevealedHateFoodTags = [...(guestPreferences[charId].RevealedHateFoodTags || [])];
-                bondsData[charId].RevealedBevTags = [...(guestPreferences[charId].RevealedBevTags || [])];
+            if (prefs[charId]) {
+                bondsData[charId].RevealedFoodTags = [...(prefs[charId].RevealedFoodTags || [])];
+                bondsData[charId].RevealedHateFoodTags = [...(prefs[charId].RevealedHateFoodTags || [])];
+                bondsData[charId].RevealedBevTags = [...(prefs[charId].RevealedBevTags || [])];
             }
         }
-        refreshUI(); // Re-render to show the newly revealed tags
+        refreshUI();
     };
 
     cheatWrapper.appendChild(cheatBtn);
     container.appendChild(cheatWrapper);
 
     // --- 2. TAG DECODING HELPER ---
-    // Turns an array of tag IDs into a comma-separated list of readable names
     function decodeTags(tagArray, tagCategory) {
         if (!tagArray || tagArray.length === 0) return "<span style='color:#999'>None</span>";
 
         return tagArray.map(tagId => {
-            // Uses the getItemDetails function from your main/inventory script
             const details = getItemDetails(tagCategory, tagId.toString());
-            // If it returns the default "Unknown", just show the ID number to keep it clean
             return details.name.startsWith("Unknown") ? `Tag ${tagId}` : details.name;
         }).join(", ");
     }
@@ -58,19 +54,15 @@ function renderBonds(container) {
         const card = document.createElement('div');
         card.className = 'item-card';
 
-        // Find the Character Name from the dictionary
         let charName = `Character ID: ${charId}`;
         if (globalDictionary.CORE?.guests && globalDictionary.CORE.guests[charId]) {
-            // Strip out <brief> tags for a clean UI
             charName = globalDictionary.CORE.guests[charId].replace(/<\/?brief>/g, '');
         }
 
-        // Decode the arrays into readable strings
         const likedFoodStr = decodeTags(charData.RevealedFoodTags, 'food_tags');
         const hatedFoodStr = decodeTags(charData.RevealedHateFoodTags, 'food_tags');
         const bevStr = decodeTags(charData.RevealedBevTags, 'beverage_tags');
 
-        // Build the visual card
         card.innerHTML = `
             <span style="font-size: 18px; color: #E91E63; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px;">
                 ${charName}
@@ -93,7 +85,6 @@ function renderBonds(container) {
             </div>
         `;
 
-        // Data Binding: Update the JSON when the user types a new level or EXP
         card.querySelector(`#lvl-${charId}`).addEventListener('change', (e) => {
             bondsData[charId].CurrentBondLevel = parseInt(e.target.value, 10);
         });

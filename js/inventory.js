@@ -10,7 +10,6 @@ function getItemDetails(category, id) {
 
 // --- MAIN INVENTORY RENDERER ---
 function renderInventory(container, category) {
-    // Reset grid styling for inventory items
     container.style.gridTemplateColumns = "repeat(auto-fill, minmax(220px, 1fr))";
     container.style.maxWidth = "none";
 
@@ -23,7 +22,6 @@ function renderInventory(container, category) {
         const card = document.createElement('div');
         card.className = 'item-card';
 
-        // Red "X" button to delete items
         const removeBtn = document.createElement('button');
         removeBtn.className = 'btn-remove';
         removeBtn.innerHTML = '&times;';
@@ -33,9 +31,27 @@ function renderInventory(container, category) {
             refreshUI();
         };
 
+        // --- TAG DECODING LOGIC ---
+        let tagsHtml = '';
+        if (globalMechanics.item_tags && globalMechanics.item_tags[category] && globalMechanics.item_tags[category][id]) {
+            const mechData = globalMechanics.item_tags[category][id];
+
+            // Determine if we are looking up food tags or beverage tags
+            let tagDictKey = (category === 'beverages') ? 'beverage_tags' : 'food_tags';
+
+            if (mechData.tags && mechData.tags.length > 0) {
+                const readableTags = mechData.tags.map(tagId => {
+                    const tagDetails = getItemDetails(tagDictKey, tagId.toString());
+                    return tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
+                });
+                tagsHtml = `<div style="font-size: 11px; color: #1565C0; margin-bottom: 8px; font-weight: 500;">Tags: ${readableTags.join(', ')}</div>`;
+            }
+        }
+
         card.innerHTML = `
             <div class="module-tag">${details.module}</div>
             <span>${details.name}</span>
+            ${tagsHtml}
         `;
 
         const input = document.createElement('input');
@@ -63,7 +79,6 @@ function updateAddDropdown(category) {
 
     const inventory = saveState.storagePartial[category] || {};
 
-    // Loop through the master dictionary to find items the user DOES NOT have
     for (const module in globalDictionary) {
         const itemsInModule = globalDictionary[module][category];
         if (!itemsInModule) continue;
@@ -91,15 +106,11 @@ document.getElementById('addItemBtn').addEventListener('click', () => {
     const select = document.getElementById('addItemSelect');
     const idToAdd = select.value;
 
-    // Make sure we have a selection and aren't on a settings tab
     if (idToAdd && currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-
-        // Ensure the category array exists in the user's save
         if (!saveState.storagePartial[currentCategory]) {
             saveState.storagePartial[currentCategory] = {};
         }
 
-        // Add it with a quantity of 1
         saveState.storagePartial[currentCategory][idToAdd] = 1;
         refreshUI();
     }

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="" />
+    <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/bonds.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bonds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AkiAuri&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AkiAuri/MystiaSaveInventoryEditor.git&quot;,
+    &quot;accountId&quot;: &quot;dae3a654-8ab7-414e-9e72-91620f5b626b&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1,
   &quot;fromUser&quot;: false
@@ -34,6 +51,8 @@
     "JavaScript Debug.index.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
@@ -66,7 +85,8 @@
       <updated>1781541142531</updated>
       <workItem from="1781541143734" duration="314000" />
       <workItem from="1781541476433" duration="803000" />
-      <workItem from="1781612935571" duration="8753000" />
+      <workItem from="1781612935571" duration="9239000" />
+      <workItem from="1781689787096" duration="680000" />
     </task>
     <servers />
   </component>
