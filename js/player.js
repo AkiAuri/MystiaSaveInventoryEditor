@@ -1,34 +1,19 @@
 // Function to evaluate cumulative stateful changes up to a target level
 function calculateStatsForLevel(targetLevel) {
-    // Standard Level 0 Fallback Baselines
     let baseStats = {
-        levelUpExp: 0,
-        startPassion: 0,
-        startTipRate: 0,
-        maxRecipes: 4,
-        maxBeverages: 4,
-        dayCookCount: 1,
-        cookSpdMultiplier: 1,
-        moveSpdMultiplier: 1,
-        qteBuffTriggerProb: 0.15,
-        qteBuffLengthMultiplier: 1,
-        doubleCollectionProb: 0,
-        shopPriceMultiplier: 1,
-        maxTray: 2,
-        additiveGuestPatient: 1,
-        additiveGuestSpawnRate: 1,
-        additiveGuestBaseMood: 0,
-        additivePositiveBuffTime: 1
+        levelUpExp: 0, startPassion: 0, startTipRate: 0, maxRecipes: 4,
+        maxBeverages: 4, dayCookCount: 1, cookSpdMultiplier: 1, moveSpdMultiplier: 1,
+        qteBuffTriggerProb: 0.15, qteBuffLengthMultiplier: 1, doubleCollectionProb: 0,
+        shopPriceMultiplier: 1, maxTray: 2, additiveGuestPatient: 1,
+        additiveGuestSpawnRate: 1, additiveGuestBaseMood: 0, additivePositiveBuffTime: 1
     };
 
     const levelLookup = globalMechanics.player_levels || {};
 
-    // Progressively build state based on hasDiff triggers
     for (let currentLvl = 0; currentLvl <= targetLevel; currentLvl++) {
         const data = levelLookup[currentLvl.toString()];
         if (!data) continue;
 
-        // Process active overrides
         const properties = [
             "startPassion", "startTipRate", "maxRecipes", "maxBeverages",
             "dayCookCount", "cookSpdMultiplier", "moveSpdMultiplier",
@@ -44,7 +29,6 @@ function calculateStatsForLevel(targetLevel) {
         });
     }
 
-    // Determine target max exp requirement bound to the targetLevel + 1 profile node
     const nextLevelNode = levelLookup[(targetLevel + 1).toString()];
     baseStats.levelUpExp = nextLevelNode ? (nextLevelNode.levelUpExp || 0) : 0;
 
@@ -58,58 +42,128 @@ function renderPlayerProfile(container) {
     container.style.gridTemplateColumns = "1fr";
     container.style.maxWidth = "550px";
 
-    // 1. Cheat Trigger Wrapper
+    const activeStats = calculateStatsForLevel(playerState.level);
+
+    // 1. Safe Cheat Trigger Wrapper
     const cheatWrapper = document.createElement('div');
     cheatWrapper.style.marginBottom = "20px";
 
     const cheatBtn = document.createElement('button');
     cheatBtn.className = "btn btn-danger";
-    cheatBtn.innerText = "⭐ Maximize Player EXP (Brute Force)";
+    cheatBtn.innerText = "⭐ Prepare Next Level Up (Safe: Max EXP - 1)";
     cheatBtn.style.width = "100%";
     cheatBtn.style.padding = "12px";
     cheatBtn.style.fontSize = "15px";
 
     cheatBtn.onclick = () => {
-        playerState.exp = 999999;
-        refreshUI();
+        if (activeStats.levelUpExp > 0) {
+            playerState.exp = activeStats.levelUpExp - 1;
+            refreshUI();
+        } else {
+            alert("You are already at Max Level!");
+        }
     };
     cheatWrapper.appendChild(cheatBtn);
     container.appendChild(cheatWrapper);
 
+    // Live Progress Updater
+    function updatePlayerProgressLive() {
+        const currentLvl = playerState.level || 0;
+        const currentExp = playerState.exp || 0;
+        const stats = calculateStatsForLevel(currentLvl);
+        const nextExp = stats.levelUpExp || 1;
+
+        const progressPercent = stats.levelUpExp === 0 ? 100 : Math.min(100, (currentExp / nextExp) * 100);
+
+        const fillEl = document.getElementById('player-exp-fill');
+        const textEl = document.getElementById('player-exp-text');
+
+        if (fillEl) fillEl.style.width = `${progressPercent}%`;
+        if (textEl) textEl.innerText = stats.levelUpExp === 0 ? "MAX LEVEL" : `${currentExp} / ${nextExp} EXP`;
+    }
+
     // 2. Input Fields Generator
     function createNumField(label, key, isNestedDay = false) {
+        const wrapper = document.createElement('div');
+        wrapper.style.marginBottom = "15px";
+
         const row = document.createElement('div');
-        row.style.display = "flex";
-        row.style.justifyContent = "space-between";
-        row.style.marginBottom = "15px";
-        row.style.alignItems = "center";
+        row.style.display = "flex"; row.style.justifyContent = "space-between"; row.style.alignItems = "center";
 
         const span = document.createElement('span');
-        span.innerText = label;
-        span.style.fontWeight = "bold";
+        span.innerText = label; span.style.fontWeight = "bold";
 
         const input = document.createElement('input');
         input.type = 'number';
         input.value = isNestedDay ? playerState.gameDate.day : playerState[key];
-        input.style.padding = "8px";
-        input.style.width = "150px";
-        input.style.border = "1px solid #ccc";
-        input.style.borderRadius = "4px";
+        input.style.padding = "8px"; input.style.width = "150px"; input.style.border = "1px solid #ccc"; input.style.borderRadius = "4px";
 
-        input.addEventListener('change', (e) => {
-            const parsedVal = parseInt(e.target.value, 10);
+        // --- HARD CLAMPING LOGIC ON INPUT ---
+        input.addEventListener('input', (e) => {
+            let parsedVal = parseInt(e.target.value, 10) || 0;
+
+            // Prevent negative values
+            if (parsedVal < 0) parsedVal = 0;
+
             if (isNestedDay) {
                 playerState.gameDate.day = parsedVal;
             } else {
-                playerState[key] = parsedVal;
+                // Apply strict limits based on the field type
+                if (key === 'level') {
+                    // Maximum possible player level detected in the JSON is 50
+                    if (parsedVal > 50) parsedVal = 50;
+                    playerState[key] = parsedVal;
+
+                    // If level changes, re-evaluate EXP so it doesn't spill over the new limit
+                    const newStats = calculateStatsForLevel(parsedVal);
+                    const safeExpLimit = newStats.levelUpExp > 0 ? newStats.levelUpExp - 1 : 0;
+                    if (playerState.exp > safeExpLimit) {
+                        playerState.exp = safeExpLimit;
+                        const expInputEl = document.getElementById('player-exp-input');
+                        if (expInputEl) expInputEl.value = safeExpLimit;
+                    }
+                }
+                else if (key === 'exp') {
+                    const currentStats = calculateStatsForLevel(playerState.level);
+                    const safeExpLimit = currentStats.levelUpExp > 0 ? currentStats.levelUpExp - 1 : 0;
+
+                    if (parsedVal > safeExpLimit) parsedVal = safeExpLimit;
+                    playerState[key] = parsedVal;
+                }
+                else {
+                    playerState[key] = parsedVal;
+                }
             }
-            // Real-time stat box update if the main level changes
+
+            e.target.value = parsedVal; // Update visual box immediately
+            if (key === 'exp' || key === 'level') updatePlayerProgressLive();
+        });
+
+        // Trigger a complete UI refresh only when the user finishes changing their level
+        input.addEventListener('change', (e) => {
             if (key === 'level') refreshUI();
         });
 
+        // Add an ID to the EXP input so the Level listener can control it
+        if (key === 'exp') input.id = 'player-exp-input';
+
         row.appendChild(span);
         row.appendChild(input);
-        return row;
+        wrapper.appendChild(row);
+
+        // Inject the progress bar ONLY under the EXP field
+        if (key === 'exp') {
+            const progWrap = document.createElement('div');
+            progWrap.innerHTML = `
+                <div id="player-exp-text" style="text-align: right; font-size: 12px; color: var(--primary); font-weight: bold; margin-top: 5px;"></div>
+                <div class="progress-wrapper">
+                    <div id="player-exp-fill" class="progress-fill" style="background-color: var(--primary);"></div>
+                </div>
+            `;
+            wrapper.appendChild(progWrap);
+        }
+
+        return wrapper;
     }
 
     container.appendChild(createNumField("Money (Fund):", "fund"));
@@ -117,9 +171,9 @@ function renderPlayerProfile(container) {
     container.appendChild(createNumField("Experience Points:", "exp"));
     container.appendChild(createNumField("Current Day:", "day", true));
 
-    // 3. Status Display Block
-    const activeStats = calculateStatsForLevel(playerState.level);
+    updatePlayerProgressLive();
 
+    // 3. Status Display Block
     const statBox = document.createElement('div');
     statBox.style.marginTop = "25px";
     statBox.style.padding = "15px";
@@ -128,7 +182,6 @@ function renderPlayerProfile(container) {
     statBox.style.borderRadius = "6px";
     statBox.style.fontFamily = "inherit";
 
-    // Format fields clean to mimic game percentages and scales
     statBox.innerHTML = `
         <h3 style="margin-top: 0; color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px; display:flex; justify-content:space-between;">
             <span>📊 Active Level Up Statistics</span>

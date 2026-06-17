@@ -29,17 +29,44 @@
         <button class="tab-btn" data-target="items">Items</button>
     </div>
 
-    <div class="toolbar" id="toolbar">
-        <select id="addItemSelect">
-            <option value="">-- Select an item to add --</option>
-        </select>
-        <button id="addItemBtn" class="btn">Add Item</button>
+    <!-- UPDATED SPACIOUS TOOLBAR -->
+    <div class="toolbar" id="toolbar" style="display: none; flex-direction: column; gap: 15px;">
+
+        <!-- TOP ROW: Search & Add -->
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <!-- Filter Current -->
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 5px;">
+                <label style="font-size: 12px; font-weight: bold; color: #666;">Filter Active Inventory</label>
+                <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Search by Name, Tag, or DLC...">
+            </div>
+
+            <!-- Find & Add New -->
+            <div style="flex: 2; min-width: 350px; display: flex; flex-direction: column; gap: 5px;">
+                <label style="font-size: 12px; font-weight: bold; color: #666;">Find & Add New Item</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="addSearchInput" class="search-bar" placeholder="🔍 Filter list by Name, Tag..." style="flex: 1;">
+                    <select id="addItemSelect" style="flex: 1.5; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="">-- Select an item to add --</option>
+                    </select>
+                    <button id="addItemBtn" class="btn">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM ROW: Mass Add -->
+        <div style="display: flex; flex-direction: column; gap: 5px; border-top: 1px solid #ddd; padding-top: 10px;">
+            <label style="font-size: 12px; font-weight: bold; color: #666;">Mass Add to Existing Inventory (Safely ignores infinite/negative items)</label>
+            <div style="display: flex; gap: 8px; max-width: 300px;">
+                <input type="number" id="massAddAmount" class="search-bar" value="50" min="1" style="flex: 1;">
+                <button id="massAddBtn" class="btn btn-danger" style="white-space: nowrap;">Add to Existing</button>
+            </div>
+        </div>
+
     </div>
 
     <div class="item-grid" id="editorContainer"></div>
 </div>
 
-<!-- Load Scripts Sequentially -->
 <script src="js/player.js"></script>
 <script src="js/merchants.js"></script>
 <script src="js/inventory.js"></script>

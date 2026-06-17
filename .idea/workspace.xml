@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="">
+    <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="Updated small stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/bonds.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bonds.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/inventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,25 +47,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.index.html.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "D:/Project_Folders/HTML/Mystia Save Inventory Editor",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Project_Folders/HTML/Mystia Save Inventory Editor&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Project_Folders\HTML\Mystia Save Inventory Editor" />
@@ -86,11 +88,33 @@
       <workItem from="1781541143734" duration="314000" />
       <workItem from="1781541476433" duration="803000" />
       <workItem from="1781612935571" duration="9239000" />
-      <workItem from="1781689787096" duration="680000" />
+      <workItem from="1781689787096" duration="4111000" />
+      <workItem from="1781705290709" duration="4803000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated small stuff">
+      <option name="closed" value="true" />
+      <created>1781690648918</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1781690648918</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated small stuff">
+      <option name="closed" value="true" />
+      <created>1781690771292</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1781690771292</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated small stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated small stuff" />
   </component>
 </project>
