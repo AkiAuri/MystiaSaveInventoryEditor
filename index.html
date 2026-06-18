@@ -29,22 +29,30 @@
         <button class="tab-btn" data-target="items">Items</button>
     </div>
 
-    <!-- UPDATED SPACIOUS TOOLBAR -->
     <div class="toolbar" id="toolbar" style="display: none; flex-direction: column; gap: 15px;">
 
-        <!-- TOP ROW: Search & Add -->
+        <!-- TOP ROW: Search, Sort & Add -->
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
             <!-- Filter Current -->
             <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 5px;">
                 <label style="font-size: 12px; font-weight: bold; color: #666;">Filter Active Inventory</label>
-                <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Search by Name, Tag, or DLC...">
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="searchInput" class="search-bar" placeholder="Search Name, Tag, DLC..." style="flex: 2;">
+                    <select id="sortSelect" class="search-bar" style="flex: 1; cursor: pointer;">
+                        <option value="default">Sort: Default</option>
+                        <option value="az">Sort: A-Z</option>
+                        <option value="high">Sort: Highest Amount</option>
+                        <option value="low">Sort: Lowest Amount</option>
+                        <option value="dlc">Sort: By DLC</option>
+                    </select>
+                </div>
             </div>
 
             <!-- Find & Add New -->
-            <div style="flex: 2; min-width: 350px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="flex: 1.5; min-width: 350px; display: flex; flex-direction: column; gap: 5px;">
                 <label style="font-size: 12px; font-weight: bold; color: #666;">Find & Add New Item</label>
                 <div style="display: flex; gap: 8px;">
-                    <input type="text" id="addSearchInput" class="search-bar" placeholder="🔍 Filter list by Name, Tag..." style="flex: 1;">
+                    <input type="text" id="addSearchInput" class="search-bar" placeholder="Filter list..." style="flex: 1;">
                     <select id="addItemSelect" style="flex: 1.5; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                         <option value="">-- Select an item to add --</option>
                     </select>
@@ -53,12 +61,19 @@
             </div>
         </div>
 
-        <!-- BOTTOM ROW: Mass Add -->
-        <div style="display: flex; flex-direction: column; gap: 5px; border-top: 1px solid #ddd; padding-top: 10px;">
-            <label style="font-size: 12px; font-weight: bold; color: #666;">Mass Add to Existing Inventory (Safely ignores infinite/negative items)</label>
-            <div style="display: flex; gap: 8px; max-width: 300px;">
-                <input type="number" id="massAddAmount" class="search-bar" value="50" min="1" style="flex: 1;">
-                <button id="massAddBtn" class="btn btn-danger" style="white-space: nowrap;">Add to Existing</button>
+        <!-- BOTTOM ROW: Mass Add & Purge -->
+        <div style="display: flex; flex-direction: row; justify-content: space-between; gap: 5px; border-top: 1px solid #ddd; padding-top: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+                <label style="font-size: 12px; font-weight: bold; color: #666;">Mass Add to Existing (Ignores infinite/negative)</label>
+                <div style="display: flex; gap: 8px; max-width: 300px;">
+                    <input type="number" id="massAddAmount" class="search-bar" value="50" min="1" style="flex: 1;">
+                    <button id="massAddBtn" class="btn btn-danger" style="white-space: nowrap;">Add to Existing</button>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 5px; align-items: flex-end;">
+                <label style="font-size: 12px; font-weight: bold; color: #666;">Clean Up Save File</label>
+                <button id="purgeZeroesBtn" class="btn" style="background-color: #607D8B; white-space: nowrap;">🗑Purge Items with 0 Amount</button>
             </div>
         </div>
 
@@ -66,6 +81,9 @@
 
     <div class="item-grid" id="editorContainer"></div>
 </div>
+
+<!-- TOAST NOTIFICATION CONTAINER -->
+<div id="toast-container"></div>
 
 <script src="js/player.js"></script>
 <script src="js/merchants.js"></script>

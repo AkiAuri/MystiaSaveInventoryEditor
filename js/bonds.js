@@ -47,7 +47,7 @@ function renderBonds(container) {
 
     const expCheatBtn = document.createElement('button');
     expCheatBtn.className = "btn btn-danger";
-    expCheatBtn.innerText = "⭐ Prepare Next Level Up (Safe)";
+    expCheatBtn.innerText = "Prepare Next Level Up (Safe)";
     expCheatBtn.style.flex = "1"; expCheatBtn.style.padding = "10px";
 
     expCheatBtn.onclick = () => {

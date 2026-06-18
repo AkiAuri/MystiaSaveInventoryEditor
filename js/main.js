@@ -4,7 +4,26 @@ let globalMechanics = {};
 let saveState = {};
 let currentCategory = 'player';
 
-// Load both JSON files before allowing interaction
+// --- TOAST SYSTEM ---
+window.showToast = function(message, type = "success") {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerText = message;
+
+    container.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+};
+
+// Load both JSON files
 Promise.all([
     fetch('mystia_dictionary.json').then(res => res.json()),
     fetch('mystia_mechanics.json').then(res => res.json())
@@ -12,7 +31,9 @@ Promise.all([
     globalDictionary = dictData;
     globalMechanics = mechData;
     console.log("Dictionary and Mechanics loaded successfully!");
-}).catch(err => alert("Error loading JSON files! Please ensure your python scripts were run and local server is active."));
+}).catch(err => {
+    window.showToast("Error loading JSON files! Ensure local server is active.", "error");
+});
 
 // Load Save File
 document.getElementById('saveUpload').addEventListener('change', function(event) {
@@ -26,9 +47,10 @@ document.getElementById('saveUpload').addEventListener('change', function(event)
             document.getElementById('status').innerText = "Loaded successfully!";
             document.getElementById('exportBtn').style.display = "block";
             document.getElementById('tabContainer').style.display = "flex";
+            window.showToast("Save file loaded!", "success");
             refreshUI();
         } catch (error) {
-            alert("Error parsing save file!");
+            window.showToast("Error parsing save file!", "error");
         }
     };
     reader.readAsText(file);
@@ -78,4 +100,5 @@ document.getElementById('exportBtn').addEventListener('click', () => {
     a.download = "Mystia#0_Edited.memory";
     a.click();
     URL.revokeObjectURL(url);
+    window.showToast("Save file downloaded successfully!", "success");
 });

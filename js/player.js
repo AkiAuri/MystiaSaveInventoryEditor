@@ -50,7 +50,7 @@ function renderPlayerProfile(container) {
 
     const cheatBtn = document.createElement('button');
     cheatBtn.className = "btn btn-danger";
-    cheatBtn.innerText = "⭐ Prepare Next Level Up (Safe: Max EXP - 1)";
+    cheatBtn.innerText = "Prepare Next Level Up (Safe: Max EXP - 1)";
     cheatBtn.style.width = "100%";
     cheatBtn.style.padding = "12px";
     cheatBtn.style.fontSize = "15px";
@@ -58,9 +58,10 @@ function renderPlayerProfile(container) {
     cheatBtn.onclick = () => {
         if (activeStats.levelUpExp > 0) {
             playerState.exp = activeStats.levelUpExp - 1;
+            window.showToast("EXP Set! You will level up next action.", "success");
             refreshUI();
         } else {
-            alert("You are already at Max Level!");
+            window.showToast("You are already at Max Level!", "warning");
         }
     };
     cheatWrapper.appendChild(cheatBtn);
@@ -98,23 +99,18 @@ function renderPlayerProfile(container) {
         input.value = isNestedDay ? playerState.gameDate.day : playerState[key];
         input.style.padding = "8px"; input.style.width = "150px"; input.style.border = "1px solid #ccc"; input.style.borderRadius = "4px";
 
-        // --- HARD CLAMPING LOGIC ON INPUT ---
         input.addEventListener('input', (e) => {
             let parsedVal = parseInt(e.target.value, 10) || 0;
 
-            // Prevent negative values
             if (parsedVal < 0) parsedVal = 0;
 
             if (isNestedDay) {
                 playerState.gameDate.day = parsedVal;
             } else {
-                // Apply strict limits based on the field type
                 if (key === 'level') {
-                    // Maximum possible player level detected in the JSON is 50
                     if (parsedVal > 50) parsedVal = 50;
                     playerState[key] = parsedVal;
 
-                    // If level changes, re-evaluate EXP so it doesn't spill over the new limit
                     const newStats = calculateStatsForLevel(parsedVal);
                     const safeExpLimit = newStats.levelUpExp > 0 ? newStats.levelUpExp - 1 : 0;
                     if (playerState.exp > safeExpLimit) {
@@ -135,23 +131,20 @@ function renderPlayerProfile(container) {
                 }
             }
 
-            e.target.value = parsedVal; // Update visual box immediately
+            e.target.value = parsedVal;
             if (key === 'exp' || key === 'level') updatePlayerProgressLive();
         });
 
-        // Trigger a complete UI refresh only when the user finishes changing their level
         input.addEventListener('change', (e) => {
             if (key === 'level') refreshUI();
         });
 
-        // Add an ID to the EXP input so the Level listener can control it
         if (key === 'exp') input.id = 'player-exp-input';
 
         row.appendChild(span);
         row.appendChild(input);
         wrapper.appendChild(row);
 
-        // Inject the progress bar ONLY under the EXP field
         if (key === 'exp') {
             const progWrap = document.createElement('div');
             progWrap.innerHTML = `
@@ -184,7 +177,7 @@ function renderPlayerProfile(container) {
 
     statBox.innerHTML = `
         <h3 style="margin-top: 0; color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px; display:flex; justify-content:space-between;">
-            <span>📊 Active Level Up Statistics</span>
+            <span>Active Level Up Statistics</span>
             <span style="color:#E91E63; font-size:14px;">Next Level Threshold: ${activeStats.levelUpExp || 'N/A'} EXP</span>
         </h3>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; font-size: 13px; line-height: 1.5;">

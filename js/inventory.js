@@ -8,41 +8,46 @@ function getItemDetails(category, id) {
     return { name: `Unknown (ID: ${id})`, module: "UNKNOWN" };
 }
 
-// --- LIVE SEARCH LISTENERS ---
+// --- GLOBAL TAG CLICK HELPER ---
+window.setSearchFilter = function(query) {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.value = query;
+        refreshUI();
+    }
+};
+
+// --- LISTENERS ---
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Main Grid Filter
     document.getElementById('searchInput')?.addEventListener('input', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            refreshUI();
-        }
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') refreshUI();
     });
 
-    // 2. Dropdown List Filter
+    document.getElementById('sortSelect')?.addEventListener('change', () => {
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') refreshUI();
+    });
+
     document.getElementById('addSearchInput')?.addEventListener('input', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            updateAddDropdown(currentCategory);
-        }
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') updateAddDropdown(currentCategory);
     });
 
-    // 3. Add Single Item Button
     document.getElementById('addItemBtn')?.addEventListener('click', () => {
         const select = document.getElementById('addItemSelect');
         const idToAdd = select.value;
+        const itemName = select.options[select.selectedIndex]?.text;
 
         if (idToAdd && currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            if (!saveState.storagePartial[currentCategory]) {
-                saveState.storagePartial[currentCategory] = {};
-            }
+            if (!saveState.storagePartial[currentCategory]) saveState.storagePartial[currentCategory] = {};
             saveState.storagePartial[currentCategory][idToAdd] = 1;
 
             const addSearch = document.getElementById('addSearchInput');
             if (addSearch) addSearch.value = "";
 
+            window.showToast(`Added ${itemName}!`, "success");
             refreshUI();
         }
     });
 
-    // 4. Mass Add "Add to Existing" Button
     document.getElementById('massAddBtn')?.addEventListener('click', () => {
         const amountToAdd = parseInt(document.getElementById('massAddAmount').value, 10) || 50;
 
@@ -50,23 +55,37 @@ document.addEventListener('DOMContentLoaded', () => {
             const inventory = saveState.storagePartial[currentCategory];
             if (!inventory) return;
 
-            // Loop through ONLY the items you already own
+            let modifiedCount = 0;
             for (const id in inventory) {
                 const currentAmount = parseInt(inventory[id], 10) || 0;
-
-                // SAFEGUARD: Skip any items with a negative ID, or items already set to a negative amount (Infinite Flag)
-                if (parseInt(id, 10) < 0 || currentAmount < 0) {
-                    continue;
-                }
-
-                // Add the new amount to the existing amount
+                if (parseInt(id, 10) < 0 || currentAmount < 0) continue;
                 saveState.storagePartial[currentCategory][id] = currentAmount + amountToAdd;
+                modifiedCount++;
             }
 
-            // Clear the grid search to ensure the user can see everything that was just added
             const gridSearch = document.getElementById('searchInput');
             if (gridSearch) gridSearch.value = "";
 
+            window.showToast(`Added ${amountToAdd} to ${modifiedCount} existing items!`, "success");
+            refreshUI();
+        }
+    });
+
+    // NEW: Purge Zeroes Logic
+    document.getElementById('purgeZeroesBtn')?.addEventListener('click', () => {
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
+            const inventory = saveState.storagePartial[currentCategory];
+            if (!inventory) return;
+
+            let purgedCount = 0;
+            for (const id in inventory) {
+                if (parseInt(inventory[id], 10) === 0) {
+                    delete saveState.storagePartial[currentCategory][id];
+                    purgedCount++;
+                }
+            }
+
+            window.showToast(purgedCount > 0 ? `Cleaned up! Removed ${purgedCount} items with 0 amount.` : "No items with 0 amount found.", purgedCount > 0 ? "success" : "warning");
             refreshUI();
         }
     });
@@ -80,11 +99,31 @@ function renderInventory(container, category) {
     const inventory = saveState.storagePartial[category] || {};
     const searchInput = document.getElementById('searchInput');
     const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
+    const sortMode = document.getElementById('sortSelect')?.value || 'default';
+
+    // 1. Build an array of items so we can sort them
+    let inventoryEntries = [];
+    for (const [id, amount] of Object.entries(inventory)) {
+        inventoryEntries.push({ id, amount: parseInt(amount, 10), details: getItemDetails(category, id) });
+    }
+
+    // 2. Sort Logic
+    if (sortMode === 'az') {
+        inventoryEntries.sort((a, b) => a.details.name.localeCompare(b.details.name));
+    } else if (sortMode === 'high') {
+        inventoryEntries.sort((a, b) => b.amount - a.amount);
+    } else if (sortMode === 'low') {
+        inventoryEntries.sort((a, b) => a.amount - b.amount);
+    } else if (sortMode === 'dlc') {
+        inventoryEntries.sort((a, b) => a.details.module.localeCompare(b.details.module));
+    }
 
     let itemsRendered = 0;
 
-    for (const [id, amount] of Object.entries(inventory)) {
-        const details = getItemDetails(category, id);
+    for (const entry of inventoryEntries) {
+        const id = entry.id;
+        const amount = entry.amount;
+        const details = entry.details;
 
         // --- TAG DECODING LOGIC ---
         let tagsHtml = '';
@@ -97,14 +136,21 @@ function renderInventory(container, category) {
             if (mechData.tags && mechData.tags.length > 0) {
                 tagNames = mechData.tags.map(tagId => {
                     const tagDetails = getItemDetails(tagDictKey, tagId.toString());
-                    return tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
+                    const name = tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
+
+                    // Create Clickable HTML tags
+                    const safeName = name.replace(/'/g, "\\'");
+                    return `<span class="clickable-tag" onclick="window.setSearchFilter('${safeName}')">${name}</span>`;
                 });
                 tagsHtml = `<div style="font-size: 11px; color: #1565C0; margin-bottom: 8px; font-weight: 500;">Tags: ${tagNames.join(', ')}</div>`;
             }
         }
 
         // --- SMART SEARCH FILTER ---
-        const searchableText = `${details.name} ${details.module} ${tagNames.join(' ')}`.toLowerCase();
+        // Strip HTML from tags for purely text-based searching
+        const rawTagsText = tagsHtml.replace(/<[^>]*>?/gm, '');
+        const searchableText = `${details.name} ${details.module} ${rawTagsText}`.toLowerCase();
+
         if (searchQuery && !searchableText.includes(searchQuery)) {
             continue;
         }
@@ -131,7 +177,7 @@ function renderInventory(container, category) {
         const input = document.createElement('input');
         input.type = 'number';
         input.value = amount;
-        input.min = "-1"; // Re-enabled -1 so users can manually set items to infinite
+        input.min = "-1";
 
         input.addEventListener('change', (e) => {
             saveState.storagePartial[category][id] = parseInt(e.target.value, 10);
@@ -169,8 +215,6 @@ function updateAddDropdown(category) {
 
         for (const [id, name] of Object.entries(itemsInModule)) {
             if (!inventory.hasOwnProperty(id)) {
-
-                // DECODE TAGS FOR THE DROPDOWN FILTER
                 let tagNames = [];
                 if (globalMechanics.item_tags && globalMechanics.item_tags[category] && globalMechanics.item_tags[category][id]) {
                     const mechData = globalMechanics.item_tags[category][id];
@@ -184,7 +228,6 @@ function updateAddDropdown(category) {
                     }
                 }
 
-                // CHECK SEARCH FILTER (Includes Name, Tag, and Module)
                 const searchableText = `${name} ${module} ${tagNames.join(' ')}`.toLowerCase();
                 if (filterText && !searchableText.includes(filterText)) {
                     continue;

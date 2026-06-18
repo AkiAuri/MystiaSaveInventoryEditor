@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="Updated small stuff">
+    <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="QOL Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/bonds.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bonds.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -89,7 +89,8 @@
       <workItem from="1781541476433" duration="803000" />
       <workItem from="1781612935571" duration="9239000" />
       <workItem from="1781689787096" duration="4111000" />
-      <workItem from="1781705290709" duration="4803000" />
+      <workItem from="1781705290709" duration="5082000" />
+      <workItem from="1781779108626" duration="936000" />
     </task>
     <task id="LOCAL-00001" summary="Updated small stuff">
       <option name="closed" value="true" />
@@ -107,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781690771292</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="QOL Update">
+      <option name="closed" value="true" />
+      <created>1781712230706</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1781712230706</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +124,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated small stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated small stuff" />
+    <MESSAGE value="QOL Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="QOL Update" />
   </component>
 </project>
