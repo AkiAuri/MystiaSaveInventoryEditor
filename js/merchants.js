@@ -10,7 +10,7 @@ function renderMerchants(container) {
 
     const cheatBtn = document.createElement('button');
     cheatBtn.className = "btn btn-danger";
-    cheatBtn.innerText = "🌟 Make All Shops Free (Set Multipliers to 0)";
+    cheatBtn.innerText = "Make All Shops Free (Set Multipliers to 0)";
     cheatBtn.style.width = "100%";
     cheatBtn.style.padding = "15px";
     cheatBtn.style.fontSize = "18px";

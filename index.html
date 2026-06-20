@@ -8,14 +8,46 @@
 </head>
 <body>
 
-<div class="container">
+<!-- THEMATIC LANDING SCREEN -->
+<div id="landingScreen" class="landing-screen">
+    <div class="save-slot-wrapper">
+        <div class="day-badge" id="dayBadge">New</div>
+
+        <label for="saveUpload" class="save-card" id="saveCard">
+            <div class="card-content" id="cardContent">
+                <div class="card-title" id="cardTitle">Select Save File<br><span style="font-size: 14px; font-weight: normal;">(Mystia#0.memory)</span></div>
+                <div class="card-divider"></div>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 10px;">
+                    <div>
+                        <div class="card-date" id="cardDate">--/--/----</div>
+                        <div class="card-money" id="cardMoney">¥ 0</div>
+                    </div>
+                    <div class="card-dlcs" id="cardDLCs"></div>
+                </div>
+
+                <div class="card-level" id="cardLevel">Lv --</div>
+            </div>
+
+            <div class="card-overlay" id="cardOverlay">
+                <button type="button" class="game-btn" id="btnEdit">Edit Save</button>
+                <button type="button" class="game-btn" id="btnDownload">Download</button>
+                <button type="button" class="game-btn" id="btnClear">Clear</button>
+            </div>
+        </label>
+
+        <input type="file" id="saveUpload" accept=".memory,.json,.txt" style="display: none;">
+    </div>
+</div>
+
+<!-- MAIN EDITOR UI -->
+<div class="container" id="editorMain" style="display: none;">
     <div class="header">
         <div>
-            <h1>Izakaya Save Editor</h1>
-            <input type="file" id="saveUpload" accept=".memory,.json,.txt">
-            <span id="status" class="status-text">Waiting for save file...</span>
+            <h1 style="margin: 0; color: #1a1a1a;">Izakaya Save Editor</h1>
+            <span id="status" class="status-text">Editing Save File...</span>
         </div>
-        <button id="exportBtn" class="btn" style="display: none;">Download Save</button>
+        <button id="closeEditorBtn" class="btn btn-danger">Save & Return to Menu</button>
     </div>
 
     <div class="tabs" id="tabContainer">
@@ -30,14 +62,11 @@
     </div>
 
     <div class="toolbar" id="toolbar" style="display: none; flex-direction: column; gap: 15px;">
-
-        <!-- TOP ROW: Search, Sort & Add -->
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <!-- Filter Current -->
             <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 5px;">
                 <label style="font-size: 12px; font-weight: bold; color: #666;">Filter Active Inventory</label>
                 <div style="display: flex; gap: 5px;">
-                    <input type="text" id="searchInput" class="search-bar" placeholder="Search Name, Tag, DLC..." style="flex: 2;">
+                    <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Search Name, Tag, DLC..." style="flex: 2;">
                     <select id="sortSelect" class="search-bar" style="flex: 1; cursor: pointer;">
                         <option value="default">Sort: Default</option>
                         <option value="az">Sort: A-Z</option>
@@ -48,11 +77,10 @@
                 </div>
             </div>
 
-            <!-- Find & Add New -->
             <div style="flex: 1.5; min-width: 350px; display: flex; flex-direction: column; gap: 5px;">
                 <label style="font-size: 12px; font-weight: bold; color: #666;">Find & Add New Item</label>
                 <div style="display: flex; gap: 8px;">
-                    <input type="text" id="addSearchInput" class="search-bar" placeholder="Filter list..." style="flex: 1;">
+                    <input type="text" id="addSearchInput" class="search-bar" placeholder="🔍 Filter list..." style="flex: 1;">
                     <select id="addItemSelect" style="flex: 1.5; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                         <option value="">-- Select an item to add --</option>
                     </select>
@@ -61,7 +89,6 @@
             </div>
         </div>
 
-        <!-- BOTTOM ROW: Mass Add & Purge -->
         <div style="display: flex; flex-direction: row; justify-content: space-between; gap: 5px; border-top: 1px solid #ddd; padding-top: 10px;">
             <div style="display: flex; flex-direction: column; gap: 5px;">
                 <label style="font-size: 12px; font-weight: bold; color: #666;">Mass Add to Existing (Ignores infinite/negative)</label>
@@ -70,19 +97,17 @@
                     <button id="massAddBtn" class="btn btn-danger" style="white-space: nowrap;">Add to Existing</button>
                 </div>
             </div>
-
             <div style="display: flex; flex-direction: column; gap: 5px; align-items: flex-end;">
                 <label style="font-size: 12px; font-weight: bold; color: #666;">Clean Up Save File</label>
-                <button id="purgeZeroesBtn" class="btn" style="background-color: #607D8B; white-space: nowrap;">🗑Purge Items with 0 Amount</button>
+                <button id="purgeZeroesBtn" class="btn" style="background-color: #607D8B; white-space: nowrap;">🗑️ Purge Items with 0 Amount</button>
             </div>
         </div>
-
     </div>
 
-    <div class="item-grid" id="editorContainer"></div>
+    <!-- The container where the notebook or the grid injects -->
+    <div id="editorContainer"></div>
 </div>
 
-<!-- TOAST NOTIFICATION CONTAINER -->
 <div id="toast-container"></div>
 
 <script src="js/player.js"></script>

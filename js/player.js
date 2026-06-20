@@ -35,40 +35,98 @@ function calculateStatsForLevel(targetLevel) {
     return baseStats;
 }
 
-// Main Tab Renderer Engine
+// MAIN TAB RENDERER: THE NOTEBOOK UI
 function renderPlayerProfile(container) {
     const playerState = saveState.playerPartial;
-
-    container.style.gridTemplateColumns = "1fr";
-    container.style.maxWidth = "550px";
-
     const activeStats = calculateStatsForLevel(playerState.level);
 
-    // 1. Safe Cheat Trigger Wrapper
-    const cheatWrapper = document.createElement('div');
-    cheatWrapper.style.marginBottom = "20px";
+    container.style = "";
 
-    const cheatBtn = document.createElement('button');
-    cheatBtn.className = "btn btn-danger";
-    cheatBtn.innerText = "Prepare Next Level Up (Safe: Max EXP - 1)";
-    cheatBtn.style.width = "100%";
-    cheatBtn.style.padding = "12px";
-    cheatBtn.style.fontSize = "15px";
+    // Generate the stats list dynamically with the red diamonds
+    const statRowsHTML = [
+        { label: "Base Vibe", val: activeStats.startPassion },
+        { label: "Base Tip Rate", val: `${(activeStats.startTipRate * 100).toFixed(0)}%` },
+        { label: "Menu Dish Limit", val: activeStats.maxRecipes },
+        { label: "Menu Drink Limit", val: activeStats.maxBeverages },
+        { label: "Daily Prep Amount", val: activeStats.dayCookCount },
+        { label: "Movement Speed", val: activeStats.moveSpdMultiplier },
+        { label: "Cooking Time", val: `${(activeStats.cookSpdMultiplier * 100).toFixed(0)}%` },
+        { label: "Sparrow Tune Buff Chance", val: `${(activeStats.qteBuffTriggerProb * 100).toFixed(0)}%` },
+        { label: "Sparrow Tune Buff Duration", val: `${(activeStats.qteBuffLengthMultiplier * 100).toFixed(0)}%` },
+        { label: "Extra Ingredient Chance", val: `${(activeStats.doubleCollectionProb * 100).toFixed(0)}%` },
+        { label: "Trade Discount", val: `${(activeStats.shopPriceMultiplier * 100).toFixed(0)}%` },
+        { label: "Max Trays", val: activeStats.maxTray },
+        { label: "Base Guest Mood", val: `+${activeStats.additiveGuestBaseMood}` },
+        { label: "Max Guest Patience", val: `${(activeStats.additiveGuestPatient * 100).toFixed(0)}%` },
+        { label: "Guest Refresh Rate", val: `${(activeStats.additiveGuestSpawnRate * 100).toFixed(0)}%` },
+        { label: "Reward Spell Card Duration", val: `${(activeStats.additivePositiveBuffTime * 100).toFixed(0)}%` }
+    ].map(s => `<div class="stat-row"><span>${s.label}</span> <span class="stat-diamond">♦</span> <span class="stat-val">${s.val}</span></div>`).join('');
 
-    cheatBtn.onclick = () => {
-        if (activeStats.levelUpExp > 0) {
-            playerState.exp = activeStats.levelUpExp - 1;
-            window.showToast("EXP Set! You will level up next action.", "success");
-            refreshUI();
-        } else {
-            window.showToast("You are already at Max Level!", "warning");
-        }
-    };
-    cheatWrapper.appendChild(cheatBtn);
-    container.appendChild(cheatWrapper);
+    // --- BUILD THE HTML STRUCTURE ---
+    container.innerHTML = `
+        <div style="margin-bottom: 15px; text-align: right;">
+            <button class="btn btn-danger" id="safeLevelUpBtn">Auto-Set EXP for Next Level</button>
+        </div>
 
-    // Live Progress Updater
-    function updatePlayerProgressLive() {
+        <div class="book-wrapper">
+            <div class="book-layout">
+                <!-- LEFT PAGE -->
+                <div class="book-left">
+                    <img src="sactx-0-256x512-BC7-Mystia_Default_Portrayal_Primary_Atlas-d4056389.png" class="mystia-sprite" alt="Mystia">
+                    <div class="book-left-text">
+                        <h2>The Proprietress!</h2>
+                        <h1>Mystia Lorelei</h1>
+                        <hr>
+                        <h3>The Night Sparrow</h3>
+                        <p>Inedible Bird<br>Indebted Singer...</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT PAGE -->
+                <div class="book-right">
+                    
+                    <div class="book-header">
+                        <div class="level-badge">
+                            <span class="level-text">Lv</span>
+                            <input type="number" id="playerLevelInput" class="seamless-input" style="font-size: 38px; color: #fceea7; text-shadow: 2px 2px 0 #333; width: 60px;" value="${playerState.level}">
+                        </div>
+                        
+                        <div class="next-level-box">
+                            <div style="color: #1a1a1a;">Next Level <span style="color: #c22020;" id="reqExpText">${activeStats.levelUpExp || 'MAX'}</span></div>
+                            <div style="margin-top: 5px;">Current Day <input type="number" id="playerDayInput" class="seamless-input" style="font-size: 14px; color: #c22020; width: 50px; background: rgba(255,255,255,0.3);" value="${playerState.gameDate.day}"></div>
+                        </div>
+                    </div>
+
+                    <div class="exp-wrapper">
+                        <div class="exp-bar-container">
+                            <input type="number" id="playerExpInput" class="seamless-input exp-orb-input" value="${playerState.exp}" title="Current EXP">
+                            <div class="exp-bar-fill-wrapper">
+                                <div id="playerExpFill" class="exp-bar-fill"></div>
+                            </div>
+                        </div>
+                        <div class="exp-arrow"></div>
+                        <span class="next-lv-text">Lv <span id="nextLvText">${playerState.level + 1}</span></span>
+                    </div>
+
+                    <div class="stat-list">
+                        ${statRowsHTML}
+                    </div>
+
+                    <div class="money-bag-container">
+                        <div class="money-plaque">
+                            <input type="number" id="playerFundInput" class="seamless-input" style="font-size: 20px; color: #fff; width: 80px;" value="${playerState.fund}">
+                            <span>¥</span>
+                        </div>
+                        <div class="money-icon"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    `;
+
+    // --- LOGIC AND BINDINGS ---
+    const updatePlayerProgressLive = () => {
         const currentLvl = playerState.level || 0;
         const currentExp = playerState.exp || 0;
         const stats = calculateStatsForLevel(currentLvl);
@@ -76,128 +134,74 @@ function renderPlayerProfile(container) {
 
         const progressPercent = stats.levelUpExp === 0 ? 100 : Math.min(100, (currentExp / nextExp) * 100);
 
-        const fillEl = document.getElementById('player-exp-fill');
-        const textEl = document.getElementById('player-exp-text');
+        const fillEl = document.getElementById('playerExpFill');
+        const nextLvlText = document.getElementById('nextLvText');
+        const reqExpText = document.getElementById('reqExpText');
 
         if (fillEl) fillEl.style.width = `${progressPercent}%`;
-        if (textEl) textEl.innerText = stats.levelUpExp === 0 ? "MAX LEVEL" : `${currentExp} / ${nextExp} EXP`;
-    }
-
-    // 2. Input Fields Generator
-    function createNumField(label, key, isNestedDay = false) {
-        const wrapper = document.createElement('div');
-        wrapper.style.marginBottom = "15px";
-
-        const row = document.createElement('div');
-        row.style.display = "flex"; row.style.justifyContent = "space-between"; row.style.alignItems = "center";
-
-        const span = document.createElement('span');
-        span.innerText = label; span.style.fontWeight = "bold";
-
-        const input = document.createElement('input');
-        input.type = 'number';
-        input.value = isNestedDay ? playerState.gameDate.day : playerState[key];
-        input.style.padding = "8px"; input.style.width = "150px"; input.style.border = "1px solid #ccc"; input.style.borderRadius = "4px";
-
-        input.addEventListener('input', (e) => {
-            let parsedVal = parseInt(e.target.value, 10) || 0;
-
-            if (parsedVal < 0) parsedVal = 0;
-
-            if (isNestedDay) {
-                playerState.gameDate.day = parsedVal;
-            } else {
-                if (key === 'level') {
-                    if (parsedVal > 50) parsedVal = 50;
-                    playerState[key] = parsedVal;
-
-                    const newStats = calculateStatsForLevel(parsedVal);
-                    const safeExpLimit = newStats.levelUpExp > 0 ? newStats.levelUpExp - 1 : 0;
-                    if (playerState.exp > safeExpLimit) {
-                        playerState.exp = safeExpLimit;
-                        const expInputEl = document.getElementById('player-exp-input');
-                        if (expInputEl) expInputEl.value = safeExpLimit;
-                    }
-                }
-                else if (key === 'exp') {
-                    const currentStats = calculateStatsForLevel(playerState.level);
-                    const safeExpLimit = currentStats.levelUpExp > 0 ? currentStats.levelUpExp - 1 : 0;
-
-                    if (parsedVal > safeExpLimit) parsedVal = safeExpLimit;
-                    playerState[key] = parsedVal;
-                }
-                else {
-                    playerState[key] = parsedVal;
-                }
-            }
-
-            e.target.value = parsedVal;
-            if (key === 'exp' || key === 'level') updatePlayerProgressLive();
-        });
-
-        input.addEventListener('change', (e) => {
-            if (key === 'level') refreshUI();
-        });
-
-        if (key === 'exp') input.id = 'player-exp-input';
-
-        row.appendChild(span);
-        row.appendChild(input);
-        wrapper.appendChild(row);
-
-        if (key === 'exp') {
-            const progWrap = document.createElement('div');
-            progWrap.innerHTML = `
-                <div id="player-exp-text" style="text-align: right; font-size: 12px; color: var(--primary); font-weight: bold; margin-top: 5px;"></div>
-                <div class="progress-wrapper">
-                    <div id="player-exp-fill" class="progress-fill" style="background-color: var(--primary);"></div>
-                </div>
-            `;
-            wrapper.appendChild(progWrap);
-        }
-
-        return wrapper;
-    }
-
-    container.appendChild(createNumField("Money (Fund):", "fund"));
-    container.appendChild(createNumField("Level:", "level"));
-    container.appendChild(createNumField("Experience Points:", "exp"));
-    container.appendChild(createNumField("Current Day:", "day", true));
+        if (nextLvlText) nextLvlText.innerText = stats.levelUpExp === 0 ? "MAX" : currentLvl + 1;
+        if (reqExpText) reqExpText.innerText = stats.levelUpExp === 0 ? "MAX" : stats.levelUpExp;
+    };
 
     updatePlayerProgressLive();
 
-    // 3. Status Display Block
-    const statBox = document.createElement('div');
-    statBox.style.marginTop = "25px";
-    statBox.style.padding = "15px";
-    statBox.style.background = "#fff";
-    statBox.style.border = "1px solid #ddd";
-    statBox.style.borderRadius = "6px";
-    statBox.style.fontFamily = "inherit";
+    document.getElementById('safeLevelUpBtn').addEventListener('click', () => {
+        const currentStats = calculateStatsForLevel(playerState.level);
+        if (currentStats.levelUpExp > 0) {
+            playerState.exp = currentStats.levelUpExp - 1;
+            window.showToast("EXP Set! You will level up next action.", "success");
+            refreshUI();
+        } else {
+            window.showToast("You are already at Max Level!", "warning");
+        }
+    });
 
-    statBox.innerHTML = `
-        <h3 style="margin-top: 0; color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px; display:flex; justify-content:space-between;">
-            <span>Active Level Up Statistics</span>
-            <span style="color:#E91E63; font-size:14px;">Next Level Threshold: ${activeStats.levelUpExp || 'N/A'} EXP</span>
-        </h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; font-size: 13px; line-height: 1.5;">
-            <div><strong>Base Vibe:</strong> ${activeStats.startPassion}</div>
-            <div><strong>Base Tip Rate:</strong> ${(activeStats.startTipRate * 100).toFixed(0)}%</div>
-            <div><strong>Menu Dish Limit:</strong> ${activeStats.maxRecipes}</div>
-            <div><strong>Menu Drink Limit:</strong> ${activeStats.maxBeverages}</div>
-            <div><strong>Daily Prep Amount:</strong> ${activeStats.dayCookCount}</div>
-            <div><strong>Movement Speed:</strong> ${activeStats.moveSpdMultiplier}x</div>
-            <div><strong>Cooking Time:</strong> ${(activeStats.cookSpdMultiplier * 100).toFixed(0)}%</div>
-            <div><strong>Sparrow Tune Buff Chance:</strong> ${(activeStats.qteBuffTriggerProb * 100).toFixed(0)}%</div>
-            <div><strong>Sparrow Tune Buff Duration:</strong> ${(activeStats.qteBuffLengthMultiplier * 100).toFixed(0)}%</div>
-            <div><strong>Extra Ingredient Chance:</strong> ${(activeStats.doubleCollectionProb * 100).toFixed(0)}%</div>
-            <div><strong>Trade Discount:</strong> ${(activeStats.shopPriceMultiplier * 100).toFixed(0)}%</div>
-            <div><strong>Max Trays:</strong> ${activeStats.maxTray}</div>
-            <div><strong>Base Guest Mood:</strong> +${activeStats.additiveGuestBaseMood}</div>
-            <div><strong>Max Guest Patience:</strong> ${(activeStats.additiveGuestPatient * 100).toFixed(0)}%</div>
-            <div><strong>Guest Refresh Rate:</strong> ${(activeStats.additiveGuestSpawnRate * 100).toFixed(0)}%</div>
-            <div><strong>Reward Spell Card Duration:</strong> ${(activeStats.additivePositiveBuffTime * 100).toFixed(0)}%</div>
-        </div>
-    `;
-    container.appendChild(statBox);
+    document.getElementById('playerLevelInput').addEventListener('input', (e) => {
+        let parsedVal = parseInt(e.target.value, 10) || 0;
+        if (parsedVal < 0) parsedVal = 0;
+        if (parsedVal > 50) parsedVal = 50;
+
+        playerState.level = parsedVal;
+        e.target.value = parsedVal;
+
+        const newStats = calculateStatsForLevel(parsedVal);
+        const safeExpLimit = newStats.levelUpExp > 0 ? newStats.levelUpExp - 1 : 0;
+        if (playerState.exp > safeExpLimit) {
+            playerState.exp = safeExpLimit;
+            document.getElementById('playerExpInput').value = safeExpLimit;
+        }
+
+        updatePlayerProgressLive();
+    });
+
+    document.getElementById('playerLevelInput').addEventListener('change', () => { refreshUI(); });
+
+    document.getElementById('playerExpInput').addEventListener('input', (e) => {
+        let parsedVal = parseInt(e.target.value, 10) || 0;
+        if (parsedVal < 0) parsedVal = 0;
+
+        const currentStats = calculateStatsForLevel(playerState.level);
+        const safeExpLimit = currentStats.levelUpExp > 0 ? currentStats.levelUpExp - 1 : 0;
+
+        if (parsedVal > safeExpLimit) parsedVal = safeExpLimit;
+
+        playerState.exp = parsedVal;
+        e.target.value = parsedVal;
+
+        updatePlayerProgressLive();
+    });
+
+    document.getElementById('playerDayInput').addEventListener('input', (e) => {
+        let parsedVal = parseInt(e.target.value, 10) || 1;
+        if (parsedVal < 1) parsedVal = 1;
+        playerState.gameDate.day = parsedVal;
+        e.target.value = parsedVal;
+    });
+
+    document.getElementById('playerFundInput').addEventListener('input', (e) => {
+        let parsedVal = parseInt(e.target.value, 10) || 0;
+        if (parsedVal < 0) parsedVal = 0;
+        playerState.fund = parsedVal;
+        e.target.value = parsedVal;
+    });
 }

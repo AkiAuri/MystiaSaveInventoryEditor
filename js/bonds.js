@@ -4,7 +4,7 @@ function getBondMaxExp(level) {
         1: 6,
         2: 17,
         3: 30,
-        4: 50,
+        4: 45,
         5: 0   // Max Level
     };
     return thresholds[level] || 50;

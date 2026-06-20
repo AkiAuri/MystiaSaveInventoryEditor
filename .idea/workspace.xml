@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="QOL Update">
+      <change afterPath="$PROJECT_DIR$/ESC_LogBG_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ESC_LogBG_01_Center.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ESC_LogBG_01_Center_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ESC_LogBG_01_Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ESC_LogBG_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ESC_LogBG_02_Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hakugyokurou_front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mystia Notebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mystia Profile Background Notebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mystia Profile EXP Next Level Arrow Notebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mystia Profile EXPBar Notebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mystia Profile MoneyBag Notebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notebook Album Bond Profile BG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sactx-0-2048x2048-BC7-NoteBook_MainPannel_Atlas-cbc6b732.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sactx-0-256x512-BC7-Mystia_Default_Portrayal_Primary_Atlas-d4056389.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/bonds.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bonds.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/merchants.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/merchants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -43,6 +59,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3FBGeMDwp7Yc0zWyPDqj3GPexXz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -90,7 +109,10 @@
       <workItem from="1781612935571" duration="9239000" />
       <workItem from="1781689787096" duration="4111000" />
       <workItem from="1781705290709" duration="5082000" />
-      <workItem from="1781779108626" duration="936000" />
+      <workItem from="1781779108626" duration="5798000" />
+      <workItem from="1781787250324" duration="2027000" />
+      <workItem from="1781802405114" duration="600000" />
+      <workItem from="1781883012475" duration="2783000" />
     </task>
     <task id="LOCAL-00001" summary="Updated small stuff">
       <option name="closed" value="true" />
@@ -116,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781712230706</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="QOL Update">
+      <option name="closed" value="true" />
+      <created>1781780275943</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1781780275943</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
