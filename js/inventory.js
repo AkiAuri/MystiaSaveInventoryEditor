@@ -8,84 +8,86 @@ function getItemDetails(category, id) {
     return { name: `Unknown (ID: ${id})`, module: "UNKNOWN" };
 }
 
-// --- GLOBAL TAG CLICK HELPER ---
-window.setSearchFilter = function(query) {
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.value = query;
-        refreshUI();
+// --- HELPER: Target Correct DLC Storage Block ---
+function getStorageTarget(module, category) {
+    if (module === 'CORE') {
+        if (!saveState.storagePartial) saveState.storagePartial = {};
+        if (!saveState.storagePartial[category]) saveState.storagePartial[category] = {};
+        return saveState.storagePartial[category];
+    } else {
+        if (!saveState.storagePartialDLC) saveState.storagePartialDLC = {};
+        if (!saveState.storagePartialDLC[module]) saveState.storagePartialDLC[module] = {};
+        if (!saveState.storagePartialDLC[module][category]) saveState.storagePartialDLC[module][category] = {};
+        return saveState.storagePartialDLC[module][category];
     }
-};
+}
 
-// --- LISTENERS ---
+// --- LIVE SEARCH LISTENERS ---
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('searchInput')?.addEventListener('input', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') refreshUI();
-    });
-
-    document.getElementById('sortSelect')?.addEventListener('change', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') refreshUI();
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
+            refreshUI();
+        }
     });
 
     document.getElementById('addSearchInput')?.addEventListener('input', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') updateAddDropdown(currentCategory);
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
+            updateAddDropdown(currentCategory);
+        }
     });
 
+    // Add Single Item (Routed to correct DLC)
     document.getElementById('addItemBtn')?.addEventListener('click', () => {
         const select = document.getElementById('addItemSelect');
         const idToAdd = select.value;
-        const itemName = select.options[select.selectedIndex]?.text;
 
         if (idToAdd && currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            if (!saveState.storagePartial[currentCategory]) saveState.storagePartial[currentCategory] = {};
-            saveState.storagePartial[currentCategory][idToAdd] = 1;
+            // Find which module this item belongs to
+            let itemModule = 'CORE';
+            for (const mod in globalDictionary) {
+                if (globalDictionary[mod][currentCategory] && globalDictionary[mod][currentCategory][idToAdd]) {
+                    itemModule = mod; break;
+                }
+            }
+
+            const targetStorage = getStorageTarget(itemModule, currentCategory);
+            targetStorage[idToAdd] = 1;
 
             const addSearch = document.getElementById('addSearchInput');
             if (addSearch) addSearch.value = "";
 
-            window.showToast(`Added ${itemName}!`, "success");
             refreshUI();
         }
     });
 
+    // Mass Add "Add to Existing" (Scans both Core and DLCs)
     document.getElementById('massAddBtn')?.addEventListener('click', () => {
         const amountToAdd = parseInt(document.getElementById('massAddAmount').value, 10) || 50;
 
         if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            const inventory = saveState.storagePartial[currentCategory];
-            if (!inventory) return;
 
-            let modifiedCount = 0;
-            for (const id in inventory) {
-                const currentAmount = parseInt(inventory[id], 10) || 0;
-                if (parseInt(id, 10) < 0 || currentAmount < 0) continue;
-                saveState.storagePartial[currentCategory][id] = currentAmount + amountToAdd;
-                modifiedCount++;
+            // Loop through the master dictionary to find all possible items
+            for (const module in globalDictionary) {
+                const itemsInModule = globalDictionary[module][currentCategory];
+                if (!itemsInModule) continue;
+
+                const targetStorage = getStorageTarget(module, currentCategory);
+
+                // Add only if the item already exists in the save file
+                for (const id in itemsInModule) {
+                    if (targetStorage.hasOwnProperty(id)) {
+                        const currentAmount = parseInt(targetStorage[id], 10) || 0;
+
+                        if (parseInt(id, 10) < 0 || currentAmount < 0) {
+                            continue; // Skip negative/infinite items
+                        }
+                        targetStorage[id] = currentAmount + amountToAdd;
+                    }
+                }
             }
 
             const gridSearch = document.getElementById('searchInput');
             if (gridSearch) gridSearch.value = "";
-
-            window.showToast(`Added ${amountToAdd} to ${modifiedCount} existing items!`, "success");
-            refreshUI();
-        }
-    });
-
-    // NEW: Purge Zeroes Logic
-    document.getElementById('purgeZeroesBtn')?.addEventListener('click', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            const inventory = saveState.storagePartial[currentCategory];
-            if (!inventory) return;
-
-            let purgedCount = 0;
-            for (const id in inventory) {
-                if (parseInt(inventory[id], 10) === 0) {
-                    delete saveState.storagePartial[currentCategory][id];
-                    purgedCount++;
-                }
-            }
-
-            window.showToast(purgedCount > 0 ? `Cleaned up! Removed ${purgedCount} items with 0 amount.` : "No items with 0 amount found.", purgedCount > 0 ? "success" : "warning");
             refreshUI();
         }
     });
@@ -96,34 +98,35 @@ function renderInventory(container, category) {
     container.style.gridTemplateColumns = "repeat(auto-fill, minmax(220px, 1fr))";
     container.style.maxWidth = "none";
 
-    const inventory = saveState.storagePartial[category] || {};
     const searchInput = document.getElementById('searchInput');
     const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
-    const sortMode = document.getElementById('sortSelect')?.value || 'default';
-
-    // 1. Build an array of items so we can sort them
-    let inventoryEntries = [];
-    for (const [id, amount] of Object.entries(inventory)) {
-        inventoryEntries.push({ id, amount: parseInt(amount, 10), details: getItemDetails(category, id) });
-    }
-
-    // 2. Sort Logic
-    if (sortMode === 'az') {
-        inventoryEntries.sort((a, b) => a.details.name.localeCompare(b.details.name));
-    } else if (sortMode === 'high') {
-        inventoryEntries.sort((a, b) => b.amount - a.amount);
-    } else if (sortMode === 'low') {
-        inventoryEntries.sort((a, b) => a.amount - b.amount);
-    } else if (sortMode === 'dlc') {
-        inventoryEntries.sort((a, b) => a.details.module.localeCompare(b.details.module));
-    }
-
     let itemsRendered = 0;
 
-    for (const entry of inventoryEntries) {
-        const id = entry.id;
-        const amount = entry.amount;
-        const details = entry.details;
+    // Build unified inventory array containing Core and DLCs
+    let unifiedInventory = [];
+
+    // Extract CORE
+    if (saveState.storagePartial && saveState.storagePartial[category]) {
+        for (const [id, amount] of Object.entries(saveState.storagePartial[category])) {
+            unifiedInventory.push({ id, amount, targetObj: saveState.storagePartial[category] });
+        }
+    }
+    // Extract DLCs
+    if (saveState.storagePartialDLC) {
+        for (const dlc in saveState.storagePartialDLC) {
+            if (saveState.storagePartialDLC[dlc][category]) {
+                for (const [id, amount] of Object.entries(saveState.storagePartialDLC[dlc][category])) {
+                    unifiedInventory.push({ id, amount, targetObj: saveState.storagePartialDLC[dlc][category] });
+                }
+            }
+        }
+    }
+
+    for (const item of unifiedInventory) {
+        const id = item.id;
+        const amount = item.amount;
+        const targetObj = item.targetObj;
+        const details = getItemDetails(category, id);
 
         // --- TAG DECODING LOGIC ---
         let tagsHtml = '';
@@ -136,21 +139,14 @@ function renderInventory(container, category) {
             if (mechData.tags && mechData.tags.length > 0) {
                 tagNames = mechData.tags.map(tagId => {
                     const tagDetails = getItemDetails(tagDictKey, tagId.toString());
-                    const name = tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
-
-                    // Create Clickable HTML tags
-                    const safeName = name.replace(/'/g, "\\'");
-                    return `<span class="clickable-tag" onclick="window.setSearchFilter('${safeName}')">${name}</span>`;
+                    return tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
                 });
                 tagsHtml = `<div style="font-size: 11px; color: #1565C0; margin-bottom: 8px; font-weight: 500;">Tags: ${tagNames.join(', ')}</div>`;
             }
         }
 
         // --- SMART SEARCH FILTER ---
-        // Strip HTML from tags for purely text-based searching
-        const rawTagsText = tagsHtml.replace(/<[^>]*>?/gm, '');
-        const searchableText = `${details.name} ${details.module} ${rawTagsText}`.toLowerCase();
-
+        const searchableText = `${details.name} ${details.module} ${tagNames.join(' ')}`.toLowerCase();
         if (searchQuery && !searchableText.includes(searchQuery)) {
             continue;
         }
@@ -164,7 +160,7 @@ function renderInventory(container, category) {
         removeBtn.className = 'btn-remove';
         removeBtn.innerHTML = '&times;';
         removeBtn.onclick = () => {
-            delete saveState.storagePartial[category][id];
+            delete targetObj[id]; // Deletes from the exact Core or DLC object
             refreshUI();
         };
 
@@ -180,7 +176,7 @@ function renderInventory(container, category) {
         input.min = "-1";
 
         input.addEventListener('change', (e) => {
-            saveState.storagePartial[category][id] = parseInt(e.target.value, 10);
+            targetObj[id] = parseInt(e.target.value, 10);
         });
 
         card.appendChild(removeBtn);
@@ -204,7 +200,18 @@ function updateAddDropdown(category) {
     if (!select) return;
     select.innerHTML = '<option value="">-- Select an item to add --</option>';
 
-    const inventory = saveState.storagePartial[category] || {};
+    // Build unified check for what we already own
+    let unifiedOwned = {};
+    if (saveState.storagePartial && saveState.storagePartial[category]) {
+        Object.assign(unifiedOwned, saveState.storagePartial[category]);
+    }
+    if (saveState.storagePartialDLC) {
+        for (const dlc in saveState.storagePartialDLC) {
+            if (saveState.storagePartialDLC[dlc][category]) {
+                Object.assign(unifiedOwned, saveState.storagePartialDLC[dlc][category]);
+            }
+        }
+    }
 
     for (const module in globalDictionary) {
         const itemsInModule = globalDictionary[module][category];
@@ -214,7 +221,8 @@ function updateAddDropdown(category) {
         optgroup.label = module;
 
         for (const [id, name] of Object.entries(itemsInModule)) {
-            if (!inventory.hasOwnProperty(id)) {
+            if (!unifiedOwned.hasOwnProperty(id)) {
+
                 let tagNames = [];
                 if (globalMechanics.item_tags && globalMechanics.item_tags[category] && globalMechanics.item_tags[category][id]) {
                     const mechData = globalMechanics.item_tags[category][id];
