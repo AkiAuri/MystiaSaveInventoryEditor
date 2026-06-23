@@ -22,27 +22,35 @@ function getStorageTarget(module, category) {
     }
 }
 
-// --- LIVE SEARCH LISTENERS ---
+// --- GLOBAL TAG CLICK HELPER ---
+window.setSearchFilter = function(query) {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.value = query;
+        refreshUI();
+    }
+};
+
+// --- LISTENERS ---
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('searchInput')?.addEventListener('input', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            refreshUI();
-        }
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') refreshUI();
+    });
+
+    document.getElementById('sortSelect')?.addEventListener('change', () => {
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') refreshUI();
     });
 
     document.getElementById('addSearchInput')?.addEventListener('input', () => {
-        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            updateAddDropdown(currentCategory);
-        }
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') updateAddDropdown(currentCategory);
     });
 
-    // Add Single Item (Routed to correct DLC)
     document.getElementById('addItemBtn')?.addEventListener('click', () => {
         const select = document.getElementById('addItemSelect');
         const idToAdd = select.value;
+        const itemName = select.options[select.selectedIndex]?.text;
 
         if (idToAdd && currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            // Find which module this item belongs to
             let itemModule = 'CORE';
             for (const mod in globalDictionary) {
                 if (globalDictionary[mod][currentCategory] && globalDictionary[mod][currentCategory][idToAdd]) {
@@ -56,38 +64,73 @@ document.addEventListener('DOMContentLoaded', () => {
             const addSearch = document.getElementById('addSearchInput');
             if (addSearch) addSearch.value = "";
 
+            window.showToast(`Added ${itemName}!`, "success");
             refreshUI();
         }
     });
 
-    // Mass Add "Add to Existing" (Scans both Core and DLCs)
     document.getElementById('massAddBtn')?.addEventListener('click', () => {
         const amountToAdd = parseInt(document.getElementById('massAddAmount').value, 10) || 50;
 
         if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
+            let modifiedCount = 0;
 
-            // Loop through the master dictionary to find all possible items
             for (const module in globalDictionary) {
                 const itemsInModule = globalDictionary[module][currentCategory];
                 if (!itemsInModule) continue;
 
                 const targetStorage = getStorageTarget(module, currentCategory);
 
-                // Add only if the item already exists in the save file
                 for (const id in itemsInModule) {
                     if (targetStorage.hasOwnProperty(id)) {
                         const currentAmount = parseInt(targetStorage[id], 10) || 0;
-
-                        if (parseInt(id, 10) < 0 || currentAmount < 0) {
-                            continue; // Skip negative/infinite items
-                        }
+                        if (parseInt(id, 10) < 0 || currentAmount < 0) continue;
                         targetStorage[id] = currentAmount + amountToAdd;
+                        modifiedCount++;
                     }
                 }
             }
 
             const gridSearch = document.getElementById('searchInput');
             if (gridSearch) gridSearch.value = "";
+
+            window.showToast(`Added ${amountToAdd} to ${modifiedCount} existing items!`, "success");
+            refreshUI();
+        }
+    });
+
+    // Purge Zeroes Logic
+    document.getElementById('purgeZeroesBtn')?.addEventListener('click', () => {
+        if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
+            let purgedCount = 0;
+
+            // Clean Core
+            const coreInv = saveState.storagePartial?.[currentCategory];
+            if (coreInv) {
+                for (const id in coreInv) {
+                    if (parseInt(coreInv[id], 10) === 0) {
+                        delete coreInv[id];
+                        purgedCount++;
+                    }
+                }
+            }
+
+            // Clean DLCs
+            if (saveState.storagePartialDLC) {
+                for (const dlc in saveState.storagePartialDLC) {
+                    const dlcInv = saveState.storagePartialDLC[dlc][currentCategory];
+                    if (dlcInv) {
+                        for (const id in dlcInv) {
+                            if (parseInt(dlcInv[id], 10) === 0) {
+                                delete dlcInv[id];
+                                purgedCount++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            window.showToast(purgedCount > 0 ? `Cleaned up! Removed ${purgedCount} items with 0 amount.` : "No items with 0 amount found.", purgedCount > 0 ? "success" : "warning");
             refreshUI();
         }
     });
@@ -99,16 +142,18 @@ function renderInventory(container, category) {
     container.style.maxWidth = "none";
 
     const searchInput = document.getElementById('searchInput');
-    const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
-    let itemsRendered = 0;
+    const sortMode = document.getElementById('sortSelect')?.value || 'default';
 
-    // Build unified inventory array containing Core and DLCs
+    // Split the search query by commas to support multiple tags, remove empty spaces
+    const rawSearch = searchInput ? searchInput.value.toLowerCase() : "";
+    const searchTerms = rawSearch.split(',').map(t => t.trim()).filter(t => t.length > 0);
+
     let unifiedInventory = [];
 
     // Extract CORE
     if (saveState.storagePartial && saveState.storagePartial[category]) {
         for (const [id, amount] of Object.entries(saveState.storagePartial[category])) {
-            unifiedInventory.push({ id, amount, targetObj: saveState.storagePartial[category] });
+            unifiedInventory.push({ id, amount: parseInt(amount, 10), targetObj: saveState.storagePartial[category], details: getItemDetails(category, id) });
         }
     }
     // Extract DLCs
@@ -116,17 +161,30 @@ function renderInventory(container, category) {
         for (const dlc in saveState.storagePartialDLC) {
             if (saveState.storagePartialDLC[dlc][category]) {
                 for (const [id, amount] of Object.entries(saveState.storagePartialDLC[dlc][category])) {
-                    unifiedInventory.push({ id, amount, targetObj: saveState.storagePartialDLC[dlc][category] });
+                    unifiedInventory.push({ id, amount: parseInt(amount, 10), targetObj: saveState.storagePartialDLC[dlc][category], details: getItemDetails(category, id) });
                 }
             }
         }
     }
 
+    // --- SORTING LOGIC ---
+    if (sortMode === 'az') {
+        unifiedInventory.sort((a, b) => a.details.name.localeCompare(b.details.name));
+    } else if (sortMode === 'high') {
+        unifiedInventory.sort((a, b) => b.amount - a.amount);
+    } else if (sortMode === 'low') {
+        unifiedInventory.sort((a, b) => a.amount - b.amount);
+    } else if (sortMode === 'dlc') {
+        unifiedInventory.sort((a, b) => a.details.module.localeCompare(b.details.module));
+    }
+
+    let itemsRendered = 0;
+
     for (const item of unifiedInventory) {
         const id = item.id;
         const amount = item.amount;
         const targetObj = item.targetObj;
-        const details = getItemDetails(category, id);
+        const details = item.details;
 
         // --- TAG DECODING LOGIC ---
         let tagsHtml = '';
@@ -139,15 +197,22 @@ function renderInventory(container, category) {
             if (mechData.tags && mechData.tags.length > 0) {
                 tagNames = mechData.tags.map(tagId => {
                     const tagDetails = getItemDetails(tagDictKey, tagId.toString());
-                    return tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
+                    const name = tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
+                    const safeName = name.replace(/'/g, "\\'");
+                    return `<span class="clickable-tag" onclick="window.setSearchFilter('${safeName}')">${name}</span>`;
                 });
                 tagsHtml = `<div style="font-size: 11px; color: #1565C0; margin-bottom: 8px; font-weight: 500;">Tags: ${tagNames.join(', ')}</div>`;
             }
         }
 
-        // --- SMART SEARCH FILTER ---
-        const searchableText = `${details.name} ${details.module} ${tagNames.join(' ')}`.toLowerCase();
-        if (searchQuery && !searchableText.includes(searchQuery)) {
+        // --- SMART MULTI-SEARCH FILTER ---
+        // Strip HTML from tags for purely text-based searching
+        const rawTagsText = tagsHtml.replace(/<[^>]*>?/gm, '');
+        const searchableText = `${details.name} ${details.module} ${rawTagsText}`.toLowerCase();
+
+        // Every comma-separated term typed must exist in the text to pass
+        const matchesAllTerms = searchTerms.every(term => searchableText.includes(term));
+        if (searchTerms.length > 0 && !matchesAllTerms) {
             continue;
         }
 
@@ -160,7 +225,7 @@ function renderInventory(container, category) {
         removeBtn.className = 'btn-remove';
         removeBtn.innerHTML = '&times;';
         removeBtn.onclick = () => {
-            delete targetObj[id]; // Deletes from the exact Core or DLC object
+            delete targetObj[id];
             refreshUI();
         };
 
@@ -184,8 +249,8 @@ function renderInventory(container, category) {
         container.appendChild(card);
     }
 
-    if (itemsRendered === 0 && searchQuery !== "") {
-        container.innerHTML = `<h3 style="grid-column: 1 / -1; color: #888;">No items match your search for "${searchQuery}"</h3>`;
+    if (itemsRendered === 0 && rawSearch !== "") {
+        container.innerHTML = `<h3 style="grid-column: 1 / -1; color: #888;">No items match your search.</h3>`;
     }
 
     updateAddDropdown(category);
@@ -195,12 +260,14 @@ function renderInventory(container, category) {
 function updateAddDropdown(category) {
     const select = document.getElementById('addItemSelect');
     const searchInput = document.getElementById('addSearchInput');
-    const filterText = searchInput ? searchInput.value.toLowerCase() : "";
+
+    // Split the dropdown search box terms by comma as well
+    const rawSearch = searchInput ? searchInput.value.toLowerCase() : "";
+    const searchTerms = rawSearch.split(',').map(t => t.trim()).filter(t => t.length > 0);
 
     if (!select) return;
     select.innerHTML = '<option value="">-- Select an item to add --</option>';
 
-    // Build unified check for what we already own
     let unifiedOwned = {};
     if (saveState.storagePartial && saveState.storagePartial[category]) {
         Object.assign(unifiedOwned, saveState.storagePartial[category]);
@@ -237,7 +304,10 @@ function updateAddDropdown(category) {
                 }
 
                 const searchableText = `${name} ${module} ${tagNames.join(' ')}`.toLowerCase();
-                if (filterText && !searchableText.includes(filterText)) {
+
+                // Must match ALL comma-separated terms to show up in the dropdown
+                const matchesAllTerms = searchTerms.every(term => searchableText.includes(term));
+                if (searchTerms.length > 0 && !matchesAllTerms) {
                     continue;
                 }
 
