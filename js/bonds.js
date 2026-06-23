@@ -10,10 +10,39 @@ function getBondMaxExp(level) {
     return thresholds[level] || 50;
 }
 
-function renderBonds(container) {
-    const bondsData = saveState.albumPartial?.specialSkinSelection || saveState.specialSkinSelection;
+// Function to safely extract character name from any DLC module
+function getGuestName(id) {
+    for (const module in globalDictionary) {
+        if (globalDictionary[module].guests && globalDictionary[module].guests[id]) {
+            return globalDictionary[module].guests[id].replace(/<\/?brief>/g, '');
+        }
+    }
+    return `Character ID: ${id}`;
+}
 
-    if (!bondsData) {
+// Function to render the Bonds / Special Guests Tab
+function renderBonds(container) {
+    let allBonds = [];
+
+    // 1. Gather CORE Characters
+    if (saveState.albumPartial && saveState.albumPartial.specialSkinSelection) {
+        for (const [id, data] of Object.entries(saveState.albumPartial.specialSkinSelection)) {
+            allBonds.push({ id: id, data: data, module: 'CORE' });
+        }
+    }
+
+    // 2. Gather DLC Characters
+    if (saveState.albumPartialDLC) {
+        for (const [dlc, dlcData] of Object.entries(saveState.albumPartialDLC)) {
+            if (dlcData.specialSkinSelection) {
+                for (const [id, data] of Object.entries(dlcData.specialSkinSelection)) {
+                    allBonds.push({ id: id, data: data, module: dlc });
+                }
+            }
+        }
+    }
+
+    if (allBonds.length === 0) {
         container.innerHTML = "<h3>No Bond Data Found in this Save</h3>";
         return;
     }
@@ -21,7 +50,7 @@ function renderBonds(container) {
     container.style.gridTemplateColumns = "repeat(auto-fill, minmax(320px, 1fr))";
     container.style.maxWidth = "none";
 
-    // --- 1. CHEAT BUTTONS ---
+    // --- CHEAT BUTTONS ---
     const cheatWrapper = document.createElement('div');
     cheatWrapper.style.gridColumn = "1 / -1";
     cheatWrapper.style.marginBottom = "20px";
@@ -35,11 +64,11 @@ function renderBonds(container) {
 
     prefCheatBtn.onclick = () => {
         const prefs = globalMechanics.guest_preferences || {};
-        for (const charId in bondsData) {
-            if (prefs[charId]) {
-                bondsData[charId].RevealedFoodTags = [...(prefs[charId].RevealedFoodTags || [])];
-                bondsData[charId].RevealedHateFoodTags = [...(prefs[charId].RevealedHateFoodTags || [])];
-                bondsData[charId].RevealedBevTags = [...(prefs[charId].RevealedBevTags || [])];
+        for (const char of allBonds) {
+            if (prefs[char.id]) {
+                char.data.RevealedFoodTags = [...(prefs[char.id].RevealedFoodTags || [])];
+                char.data.RevealedHateFoodTags = [...(prefs[char.id].RevealedHateFoodTags || [])];
+                char.data.RevealedBevTags = [...(prefs[char.id].RevealedBevTags || [])];
             }
         }
         refreshUI();
@@ -47,14 +76,14 @@ function renderBonds(container) {
 
     const expCheatBtn = document.createElement('button');
     expCheatBtn.className = "btn btn-danger";
-    expCheatBtn.innerText = "Prepare Next Level Up (Safe)";
+    expCheatBtn.innerText = "⭐ Prepare Next Level Up (Safe)";
     expCheatBtn.style.flex = "1"; expCheatBtn.style.padding = "10px";
 
     expCheatBtn.onclick = () => {
-        for (const charId in bondsData) {
-            const currentLevel = bondsData[charId].CurrentBondLevel;
+        for (const char of allBonds) {
+            const currentLevel = char.data.CurrentBondLevel;
             if (currentLevel < 5) {
-                bondsData[charId].CurrentBondExp = getBondMaxExp(currentLevel) - 1;
+                char.data.CurrentBondExp = getBondMaxExp(currentLevel) - 1;
             }
         }
         refreshUI();
@@ -64,7 +93,7 @@ function renderBonds(container) {
     cheatWrapper.appendChild(expCheatBtn);
     container.appendChild(cheatWrapper);
 
-    // --- 2. TAG DECODING HELPER ---
+    // --- TAG DECODING HELPER ---
     function decodeTags(tagArray, tagCategory) {
         if (!tagArray || tagArray.length === 0) return "<span style='color:#999'>None</span>";
         return tagArray.map(tagId => {
@@ -73,16 +102,15 @@ function renderBonds(container) {
         }).join(", ");
     }
 
-    // --- 3. RENDER THE CARDS ---
-    for (const [charId, charData] of Object.entries(bondsData)) {
+    // --- RENDER THE CARDS ---
+    for (const char of allBonds) {
+        const charId = char.id;
+        const charData = char.data;
+
         const card = document.createElement('div');
         card.className = 'item-card';
 
-        let charName = `Character ID: ${charId}`;
-        if (globalDictionary.CORE?.guests && globalDictionary.CORE.guests[charId]) {
-            charName = globalDictionary.CORE.guests[charId].replace(/<\/?brief>/g, '');
-        }
-
+        const charName = getGuestName(charId);
         const likedFoodStr = decodeTags(charData.RevealedFoodTags, 'food_tags');
         const hatedFoodStr = decodeTags(charData.RevealedHateFoodTags, 'food_tags');
         const bevStr = decodeTags(charData.RevealedBevTags, 'beverage_tags');
@@ -92,6 +120,7 @@ function renderBonds(container) {
         const textInit = (charData.CurrentBondLevel >= 5) ? "MAX LEVEL" : `${charData.CurrentBondExp} / ${maxExpInit} EXP`;
 
         card.innerHTML = `
+            <div class="module-tag">${char.module}</div>
             <span style="font-size: 18px; color: #E91E63; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px;">
                 ${charName}
             </span>
@@ -120,8 +149,8 @@ function renderBonds(container) {
 
         // Live updater function to render math
         const updateBondLive = () => {
-            const currentLvl = bondsData[charId].CurrentBondLevel;
-            const currentExp = bondsData[charId].CurrentBondExp;
+            const currentLvl = charData.CurrentBondLevel;
+            const currentExp = charData.CurrentBondExp;
 
             const max = getBondMaxExp(currentLvl);
             const pct = (currentLvl >= 5) ? 100 : Math.min(100, (currentExp / max) * 100);
@@ -130,42 +159,38 @@ function renderBonds(container) {
             card.querySelector(`#prog-text-${charId}`).innerText = currentLvl >= 5 ? "MAX LEVEL" : `${currentExp} / ${max} EXP`;
         };
 
-        // --- HARD CLAMPING FOR BOND LEVEL ---
         card.querySelector(`#lvl-${charId}`).addEventListener('input', (e) => {
             let parsedLvl = parseInt(e.target.value, 10) || 1;
 
             if (parsedLvl < 1) parsedLvl = 1;
             if (parsedLvl > 5) parsedLvl = 5;
 
-            bondsData[charId].CurrentBondLevel = parsedLvl;
+            charData.CurrentBondLevel = parsedLvl;
             e.target.value = parsedLvl;
 
-            // Re-evaluate EXP instantly if the level changes
             const maxThreshold = getBondMaxExp(parsedLvl);
             const safeExp = parsedLvl >= 5 ? 0 : maxThreshold - 1;
-            if (bondsData[charId].CurrentBondExp > safeExp) {
-                bondsData[charId].CurrentBondExp = safeExp;
+            if (charData.CurrentBondExp > safeExp) {
+                charData.CurrentBondExp = safeExp;
                 card.querySelector(`#exp-${charId}`).value = safeExp;
             }
 
             updateBondLive();
         });
 
-        // --- HARD CLAMPING FOR BOND EXP ---
         card.querySelector(`#exp-${charId}`).addEventListener('input', (e) => {
             let parsedExp = parseInt(e.target.value, 10) || 0;
             if (parsedExp < 0) parsedExp = 0;
 
-            const currentLvl = bondsData[charId].CurrentBondLevel;
+            const currentLvl = charData.CurrentBondLevel;
             const maxThreshold = getBondMaxExp(currentLvl);
 
-            // Limit EXP to Maximum allowed minus 1 (or exactly 0 if they are Max Level)
             const safeExp = currentLvl >= 5 ? 0 : maxThreshold - 1;
 
             if (parsedExp > safeExp) parsedExp = safeExp;
 
-            bondsData[charId].CurrentBondExp = parsedExp;
-            e.target.value = parsedExp; // Forces the UI box to shrink down to the cap
+            charData.CurrentBondExp = parsedExp;
+            e.target.value = parsedExp;
 
             updateBondLive();
         });
