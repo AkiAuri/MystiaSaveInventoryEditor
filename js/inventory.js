@@ -8,6 +8,20 @@ function getItemDetails(category, id) {
     return { name: `Unknown (ID: ${id})`, module: "UNKNOWN" };
 }
 
+// --- HELPER: Target Correct DLC Storage Block ---
+function getStorageTarget(module, category) {
+    if (module === 'CORE') {
+        if (!saveState.storagePartial) saveState.storagePartial = {};
+        if (!saveState.storagePartial[category]) saveState.storagePartial[category] = {};
+        return saveState.storagePartial[category];
+    } else {
+        if (!saveState.storagePartialDLC) saveState.storagePartialDLC = {};
+        if (!saveState.storagePartialDLC[module]) saveState.storagePartialDLC[module] = {};
+        if (!saveState.storagePartialDLC[module][category]) saveState.storagePartialDLC[module][category] = {};
+        return saveState.storagePartialDLC[module][category];
+    }
+}
+
 // --- GLOBAL TAG CLICK HELPER ---
 window.setSearchFilter = function(query) {
     const searchInput = document.getElementById('searchInput');
@@ -37,8 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemName = select.options[select.selectedIndex]?.text;
 
         if (idToAdd && currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            if (!saveState.storagePartial[currentCategory]) saveState.storagePartial[currentCategory] = {};
-            saveState.storagePartial[currentCategory][idToAdd] = 1;
+            let itemModule = 'CORE';
+            for (const mod in globalDictionary) {
+                if (globalDictionary[mod][currentCategory] && globalDictionary[mod][currentCategory][idToAdd]) {
+                    itemModule = mod; break;
+                }
+            }
+
+            const targetStorage = getStorageTarget(itemModule, currentCategory);
+            targetStorage[idToAdd] = 1;
 
             const addSearch = document.getElementById('addSearchInput');
             if (addSearch) addSearch.value = "";
@@ -52,15 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const amountToAdd = parseInt(document.getElementById('massAddAmount').value, 10) || 50;
 
         if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            const inventory = saveState.storagePartial[currentCategory];
-            if (!inventory) return;
-
             let modifiedCount = 0;
-            for (const id in inventory) {
-                const currentAmount = parseInt(inventory[id], 10) || 0;
-                if (parseInt(id, 10) < 0 || currentAmount < 0) continue;
-                saveState.storagePartial[currentCategory][id] = currentAmount + amountToAdd;
-                modifiedCount++;
+
+            for (const module in globalDictionary) {
+                const itemsInModule = globalDictionary[module][currentCategory];
+                if (!itemsInModule) continue;
+
+                const targetStorage = getStorageTarget(module, currentCategory);
+
+                for (const id in itemsInModule) {
+                    if (targetStorage.hasOwnProperty(id)) {
+                        const currentAmount = parseInt(targetStorage[id], 10) || 0;
+                        if (parseInt(id, 10) < 0 || currentAmount < 0) continue;
+                        targetStorage[id] = currentAmount + amountToAdd;
+                        modifiedCount++;
+                    }
+                }
             }
 
             const gridSearch = document.getElementById('searchInput');
@@ -71,17 +99,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // NEW: Purge Zeroes Logic
+    // Purge Zeroes Logic
     document.getElementById('purgeZeroesBtn')?.addEventListener('click', () => {
         if (currentCategory !== 'player' && currentCategory !== 'merchants' && currentCategory !== 'bonds') {
-            const inventory = saveState.storagePartial[currentCategory];
-            if (!inventory) return;
-
             let purgedCount = 0;
-            for (const id in inventory) {
-                if (parseInt(inventory[id], 10) === 0) {
-                    delete saveState.storagePartial[currentCategory][id];
-                    purgedCount++;
+
+            // Clean Core
+            const coreInv = saveState.storagePartial?.[currentCategory];
+            if (coreInv) {
+                for (const id in coreInv) {
+                    if (parseInt(coreInv[id], 10) === 0) {
+                        delete coreInv[id];
+                        purgedCount++;
+                    }
+                }
+            }
+
+            // Clean DLCs
+            if (saveState.storagePartialDLC) {
+                for (const dlc in saveState.storagePartialDLC) {
+                    const dlcInv = saveState.storagePartialDLC[dlc][currentCategory];
+                    if (dlcInv) {
+                        for (const id in dlcInv) {
+                            if (parseInt(dlcInv[id], 10) === 0) {
+                                delete dlcInv[id];
+                                purgedCount++;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -96,34 +141,50 @@ function renderInventory(container, category) {
     container.style.gridTemplateColumns = "repeat(auto-fill, minmax(220px, 1fr))";
     container.style.maxWidth = "none";
 
-    const inventory = saveState.storagePartial[category] || {};
     const searchInput = document.getElementById('searchInput');
-    const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
     const sortMode = document.getElementById('sortSelect')?.value || 'default';
 
-    // 1. Build an array of items so we can sort them
-    let inventoryEntries = [];
-    for (const [id, amount] of Object.entries(inventory)) {
-        inventoryEntries.push({ id, amount: parseInt(amount, 10), details: getItemDetails(category, id) });
+    // Split the search query by commas to support multiple tags, remove empty spaces
+    const rawSearch = searchInput ? searchInput.value.toLowerCase() : "";
+    const searchTerms = rawSearch.split(',').map(t => t.trim()).filter(t => t.length > 0);
+
+    let unifiedInventory = [];
+
+    // Extract CORE
+    if (saveState.storagePartial && saveState.storagePartial[category]) {
+        for (const [id, amount] of Object.entries(saveState.storagePartial[category])) {
+            unifiedInventory.push({ id, amount: parseInt(amount, 10), targetObj: saveState.storagePartial[category], details: getItemDetails(category, id) });
+        }
+    }
+    // Extract DLCs
+    if (saveState.storagePartialDLC) {
+        for (const dlc in saveState.storagePartialDLC) {
+            if (saveState.storagePartialDLC[dlc][category]) {
+                for (const [id, amount] of Object.entries(saveState.storagePartialDLC[dlc][category])) {
+                    unifiedInventory.push({ id, amount: parseInt(amount, 10), targetObj: saveState.storagePartialDLC[dlc][category], details: getItemDetails(category, id) });
+                }
+            }
+        }
     }
 
-    // 2. Sort Logic
+    // --- SORTING LOGIC ---
     if (sortMode === 'az') {
-        inventoryEntries.sort((a, b) => a.details.name.localeCompare(b.details.name));
+        unifiedInventory.sort((a, b) => a.details.name.localeCompare(b.details.name));
     } else if (sortMode === 'high') {
-        inventoryEntries.sort((a, b) => b.amount - a.amount);
+        unifiedInventory.sort((a, b) => b.amount - a.amount);
     } else if (sortMode === 'low') {
-        inventoryEntries.sort((a, b) => a.amount - b.amount);
+        unifiedInventory.sort((a, b) => a.amount - b.amount);
     } else if (sortMode === 'dlc') {
-        inventoryEntries.sort((a, b) => a.details.module.localeCompare(b.details.module));
+        unifiedInventory.sort((a, b) => a.details.module.localeCompare(b.details.module));
     }
 
     let itemsRendered = 0;
 
-    for (const entry of inventoryEntries) {
-        const id = entry.id;
-        const amount = entry.amount;
-        const details = entry.details;
+    for (const item of unifiedInventory) {
+        const id = item.id;
+        const amount = item.amount;
+        const targetObj = item.targetObj;
+        const details = item.details;
 
         // --- TAG DECODING LOGIC ---
         let tagsHtml = '';
@@ -137,8 +198,6 @@ function renderInventory(container, category) {
                 tagNames = mechData.tags.map(tagId => {
                     const tagDetails = getItemDetails(tagDictKey, tagId.toString());
                     const name = tagDetails.name.startsWith("Unknown") ? `Tag ${tagId}` : tagDetails.name;
-
-                    // Create Clickable HTML tags
                     const safeName = name.replace(/'/g, "\\'");
                     return `<span class="clickable-tag" onclick="window.setSearchFilter('${safeName}')">${name}</span>`;
                 });
@@ -146,12 +205,14 @@ function renderInventory(container, category) {
             }
         }
 
-        // --- SMART SEARCH FILTER ---
+        // --- SMART MULTI-SEARCH FILTER ---
         // Strip HTML from tags for purely text-based searching
         const rawTagsText = tagsHtml.replace(/<[^>]*>?/gm, '');
         const searchableText = `${details.name} ${details.module} ${rawTagsText}`.toLowerCase();
 
-        if (searchQuery && !searchableText.includes(searchQuery)) {
+        // Every comma-separated term typed must exist in the text to pass
+        const matchesAllTerms = searchTerms.every(term => searchableText.includes(term));
+        if (searchTerms.length > 0 && !matchesAllTerms) {
             continue;
         }
 
@@ -164,7 +225,7 @@ function renderInventory(container, category) {
         removeBtn.className = 'btn-remove';
         removeBtn.innerHTML = '&times;';
         removeBtn.onclick = () => {
-            delete saveState.storagePartial[category][id];
+            delete targetObj[id];
             refreshUI();
         };
 
@@ -180,7 +241,7 @@ function renderInventory(container, category) {
         input.min = "-1";
 
         input.addEventListener('change', (e) => {
-            saveState.storagePartial[category][id] = parseInt(e.target.value, 10);
+            targetObj[id] = parseInt(e.target.value, 10);
         });
 
         card.appendChild(removeBtn);
@@ -188,8 +249,8 @@ function renderInventory(container, category) {
         container.appendChild(card);
     }
 
-    if (itemsRendered === 0 && searchQuery !== "") {
-        container.innerHTML = `<h3 style="grid-column: 1 / -1; color: #888;">No items match your search for "${searchQuery}"</h3>`;
+    if (itemsRendered === 0 && rawSearch !== "") {
+        container.innerHTML = `<h3 style="grid-column: 1 / -1; color: #888;">No items match your search.</h3>`;
     }
 
     updateAddDropdown(category);
@@ -199,12 +260,25 @@ function renderInventory(container, category) {
 function updateAddDropdown(category) {
     const select = document.getElementById('addItemSelect');
     const searchInput = document.getElementById('addSearchInput');
-    const filterText = searchInput ? searchInput.value.toLowerCase() : "";
+
+    // Split the dropdown search box terms by comma as well
+    const rawSearch = searchInput ? searchInput.value.toLowerCase() : "";
+    const searchTerms = rawSearch.split(',').map(t => t.trim()).filter(t => t.length > 0);
 
     if (!select) return;
     select.innerHTML = '<option value="">-- Select an item to add --</option>';
 
-    const inventory = saveState.storagePartial[category] || {};
+    let unifiedOwned = {};
+    if (saveState.storagePartial && saveState.storagePartial[category]) {
+        Object.assign(unifiedOwned, saveState.storagePartial[category]);
+    }
+    if (saveState.storagePartialDLC) {
+        for (const dlc in saveState.storagePartialDLC) {
+            if (saveState.storagePartialDLC[dlc][category]) {
+                Object.assign(unifiedOwned, saveState.storagePartialDLC[dlc][category]);
+            }
+        }
+    }
 
     for (const module in globalDictionary) {
         const itemsInModule = globalDictionary[module][category];
@@ -214,7 +288,8 @@ function updateAddDropdown(category) {
         optgroup.label = module;
 
         for (const [id, name] of Object.entries(itemsInModule)) {
-            if (!inventory.hasOwnProperty(id)) {
+            if (!unifiedOwned.hasOwnProperty(id)) {
+
                 let tagNames = [];
                 if (globalMechanics.item_tags && globalMechanics.item_tags[category] && globalMechanics.item_tags[category][id]) {
                     const mechData = globalMechanics.item_tags[category][id];
@@ -229,7 +304,10 @@ function updateAddDropdown(category) {
                 }
 
                 const searchableText = `${name} ${module} ${tagNames.join(' ')}`.toLowerCase();
-                if (filterText && !searchableText.includes(filterText)) {
+
+                // Must match ALL comma-separated terms to show up in the dropdown
+                const matchesAllTerms = searchTerms.every(term => searchableText.includes(term));
+                if (searchTerms.length > 0 && !matchesAllTerms) {
                     continue;
                 }
 
