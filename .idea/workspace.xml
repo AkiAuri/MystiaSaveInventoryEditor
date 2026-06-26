@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77a6e65e-8ba0-485a-9232-db5180a8da29" name="Changes" comment="QOL Update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/bonds.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bonds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/inventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/merchants.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/merchants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/AkiAuri/MystiaSaveInventoryEditor.git",
-    "accountId": "0dd146e2-eaf3-414a-9bfa-031dc24ab88f"
+    "accountId": "dae3a654-8ab7-414e-9e72-91620f5b626b"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -95,6 +94,7 @@
       <workItem from="1781802405114" duration="600000" />
       <workItem from="1781883012475" duration="2783000" />
       <workItem from="1781960580388" duration="612000" />
+      <workItem from="1782467744238" duration="322000" />
     </task>
     <task id="LOCAL-00001" summary="Updated small stuff">
       <option name="closed" value="true" />
@@ -128,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781780275943</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="QOL Update">
+      <option name="closed" value="true" />
+      <created>1782230495078</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1782230495078</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
