@@ -66,6 +66,13 @@ function renderBonds(container) {
     toolbar.style.borderRadius = "8px";
     toolbar.style.boxShadow = "0 2px 4px rgba(0,0,0,0.05)";
 
+    // Search Row
+    const searchRow = document.createElement('div');
+    searchRow.innerHTML = `
+        <label style="font-size: 12px; font-weight: bold; color: #666; display: block; margin-bottom: 5px;">Search Character</label>
+        <input type="text" id="bondSearch" class="search-bar" placeholder="Type a character name..." style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+    `;
+
     // Filters row
     const filterRow = document.createElement('div');
     filterRow.style.display = "flex";
@@ -163,6 +170,7 @@ function renderBonds(container) {
     cheatWrapper.appendChild(prefCheatBtn);
     cheatWrapper.appendChild(expCheatBtn);
 
+    toolbar.appendChild(searchRow);
     toolbar.appendChild(filterRow);
     toolbar.appendChild(cheatWrapper);
     container.appendChild(toolbar);
@@ -187,6 +195,7 @@ function renderBonds(container) {
     function renderCards() {
         grid.innerHTML = '';
 
+        const searchQuery = document.getElementById('bondSearch').value.toLowerCase().trim();
         const modFilter = document.getElementById('bondModuleFilter').value;
         const lvlFilter = document.getElementById('bondLevelFilter').value;
         const sortFilter = document.getElementById('bondSort').value;
@@ -196,6 +205,9 @@ function renderBonds(container) {
         let filtered = allBonds.filter(char => {
             const name = getGuestName(char.id);
             const isPh = name.includes("[Placeholder") || name.includes("Unknown");
+
+            // Search filter
+            if (searchQuery && !name.toLowerCase().includes(searchQuery)) return false;
 
             // Placeholder filter
             if (!showPh && isPh) return false;
@@ -327,7 +339,14 @@ function renderBonds(container) {
         }
     }
 
-    // Attach event listener to toolbar for automatic filtering/sorting when inputs change
+    // Attach real-time listener to search bar
+    toolbar.addEventListener('input', (e) => {
+        if (e.target.id === 'bondSearch') {
+            renderCards();
+        }
+    });
+
+    // Attach event listener to toolbar for automatic filtering/sorting when dropdowns/checkboxes change
     toolbar.addEventListener('change', (e) => {
         if (['bondModuleFilter', 'bondLevelFilter', 'bondSort', 'bondShowPlaceholders'].includes(e.target.id)) {
             renderCards();
